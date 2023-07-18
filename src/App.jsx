@@ -12,8 +12,8 @@ function App() {
     <div className="App">
       <Router>
         <Routes>
+          <Route index element = {<Home/>}></Route>
           <Route exact path="/register" element={<Register/>}/>
-          <Route exact path="/home" element={<Home />}/>
         </Routes>
       </Router>
       {/* <Register/> */}
