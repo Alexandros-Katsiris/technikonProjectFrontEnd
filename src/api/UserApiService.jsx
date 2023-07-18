@@ -13,12 +13,12 @@ export const deleteUserApi = (id) => apiClient.delete(`/users/${id}`)
 
 
 
-export const retrieveUserApi = (id) => apiClient.get(`/owners/${id}`)
+export const retrieveUserApi = (id) => apiClient.get(`/users/${id}`)
 
 
 
 
-export const updateUserApi = (user) => apiClient.put('/owners', user)
+export const updateUserApi = (user) => apiClient.put('/users', user)
 
 
 
