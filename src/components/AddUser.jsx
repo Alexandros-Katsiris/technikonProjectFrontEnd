@@ -2,6 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import {Modal, Form, Button, Row, Col} from 'react-bootstrap';
 import { createUserApi } from '../api/UserApiService';
+import './AddUser.jsx'
 
 const AddContact = ({showModal, toggleModal, addContact}) => {
   // const [firstname, setFirstname] = useState("");
@@ -77,46 +78,50 @@ const AddContact = ({showModal, toggleModal, addContact}) => {
   //  const {street, city,number,pc} = address;
 
   return (
-    <Modal show={showModal} onHide={toggleModal}>
-      <Modal.Header closeButton>
-        <Modal.Title>Register</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Form>
-          {
-            [
-              {field: "tin",state:user.tin, type: "number", placeholder: "Tax ID", setUser},
-              {field: "firstName",state:user.firstName, type: "text", placeholder: "FirstName", setUser},
-              {field: "surname",state:user.surname, type: "text", placeholder: "Surname",  setUser},
-              {field: "username",state:user.username, type: "text", placeholder: "Username",  setUser},
-              {field: "password",state:user.password, type: "password", placeholder: "Password",  setUser},
-              {field: "phoneNumber",state:user.phone, type: "number", placeholder: "PhoneNumber",  setUser},
-              {field: "email",state:user.email, type: "email", placeholder: "Email",  setUser},
-              {field: "street",state:user.address.street, type: "text", placeholder: "Street", setUser},
-              {field: "city",state:user.address.city, type: "text", placeholder: "City",  setUser},
-              {field: "number",state:user.address.number, type: "number", placeholder: "Number",  setUser},
-              {field: "pc",state:user.address.pc, type: "number", placeholder: "Postal Code",  setUser},
-            ].map(({field,state, type, placeholder, setUser}) => (
-              <Form.Group key={field} as={Row} controlId={field}>
-                <Form.Label column sm="2">{placeholder}</Form.Label>
-                <Col sm="10">
-                  <Form.Control type={type} placeholder={placeholder} value={state} name={field}
-                   onChange={(e) => onInputChange(e)}/>
-                </Col>
-              </Form.Group>
-            ))
-          }
-        </Form>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="secondary" onClick={toggleModal}>
-          Cancel
-        </Button>
-        <Button variant="primary" onClick={handleSubmit}>
-          Register
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <div >
+      <Modal className='modal' show={showModal} centered onHide={toggleModal} >
+        <div className='rounded-2' style={{ background: '#7398CF', margin: 0}}>
+        <Modal.Header closeButton>
+          <Modal.Title>Register</Modal.Title>
+        </Modal.Header >
+        <Modal.Body >         
+          <Form >
+            {
+              [
+                {field: "tin",state:user.tin, type: "number", placeholder: "Tax ID", setUser},
+                {field: "firstName",state:user.firstName, type: "text", placeholder: "FirstName", setUser},
+                {field: "surname",state:user.surname, type: "text", placeholder: "Surname",  setUser},
+                {field: "username",state:user.username, type: "text", placeholder: "Username",  setUser},
+                {field: "password",state:user.password, type: "password", placeholder: "Password",  setUser},
+                {field: "phoneNumber",state:user.phone, type: "number", placeholder: "PhoneNumber",  setUser},
+                {field: "email",state:user.email, type: "email", placeholder: "Email",  setUser},
+                {field: "street",state:user.address.street, type: "text", placeholder: "Street", setUser},
+                {field: "city",state:user.address.city, type: "text", placeholder: "City",  setUser},
+                {field: "number",state:user.address.number, type: "number", placeholder: "Number",  setUser},
+                {field: "pc",state:user.address.pc, type: "number", placeholder: "Postal Code",  setUser},
+              ].map(({field,state, type, placeholder, setUser}) => (
+                <Form.Group key={field} as={Row} controlId={field}>
+                  <Form.Label column sm="2">{placeholder}</Form.Label>
+                  <Col sm="10">
+                    <Form.Control type={type} placeholder={placeholder} value={state} name={field}
+                    onChange={(e) => onInputChange(e)}/>
+                  </Col>
+                </Form.Group>
+              ))
+            }
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={toggleModal}>
+            Cancel
+          </Button>
+          <Button variant="primary" onClick={handleSubmit}>
+            Register
+          </Button>
+        </Modal.Footer>
+        </div>
+      </Modal>
+      </div>
   );
 };
 
