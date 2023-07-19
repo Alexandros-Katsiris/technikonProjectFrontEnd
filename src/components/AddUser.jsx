@@ -1,41 +1,107 @@
-import React, {useState} from 'react';
+import React from 'react';
+import { useState } from 'react';
 import {Modal, Form, Button, Row, Col} from 'react-bootstrap';
+import { createUserApi } from '../api/UserApiService';
 
 const AddContact = ({showModal, toggleModal, addContact}) => {
-  const [username, setUsername] = useState("");
-  const [name, setName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [address, setAddress] = useState({
-    street: "",
-    city: ""
-  });
+  // const [firstname, setFirstname] = useState("");
+  // const [surname, setSurname] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [tin, setTin] = useState("");
+  // const [username, setUsername] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [address, setAddress] = useState({
+  //   street: "",
+  //   city: "",
+  //   number: "",
+  //   pc: ""
+  // });
 
-  const onInputChange = () => {
-  };
+  // const onInputChange = (e,setState) => {
+  //   const value = e.target.value;
+  //   setState(value);
+  // };
 
-  const {street, city} = address;
+  
+    const [user, setUser] = useState({
+      tin: "",
+      firstName: "",
+      surname: "",
+      email: "",
+      phoneNumber: "",
+      username: "",
+      password: "",
+      address: {
+        street: "",
+        number: "",
+        city: "",
+        pc: "",
+      }});
+    
+  
+    const onInputChange = (event) => {
+      const { name: name, value } = event.target;
+  
+      if (
+        ["number", "street", "pc", "city"].includes(
+          name
+        )
+      ) {
+        setUser((prevState) => ({
+          ...prevState,
+  
+          address: {
+            ...prevState.address,
+  
+            [name]: value,
+          },
+        }));
+      } else {
+        setUser((prevState) => ({ ...prevState, [name]: value }));
+      }
+    }
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      createUserApi(user)
+        .then((response) => {
+          console.log(response.data);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    
+
+  //  const {street, city,number,pc} = address;
 
   return (
     <Modal show={showModal} onHide={toggleModal}>
       <Modal.Header closeButton>
-        <Modal.Title>Add contact</Modal.Title>
+        <Modal.Title>Register</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
           {
             [
-              {field: "username", state: username, type: "text", placeholder: "Username", setState: setUsername},
-              {field: "name", state: name, type: "text", placeholder: "Name", setState: setName},
-              {field: "phone", state: phone, type: "text", placeholder: "Phone", setState: setPhone},
-              {field: "email", state: email, type: "email", placeholder: "Email", setState: setEmail},
-              {field: "street", state: street, type: "text", placeholder: "Street", setState: setAddress},
-              {field: "city", state: city, type: "text", placeholder: "City", setState: setAddress},
-            ].map(({field, state, type, placeholder, setState}) => (
+              {field: "tin",state:user.tin, type: "number", placeholder: "Tax ID", setUser},
+              {field: "firstName",state:user.firstName, type: "text", placeholder: "FirstName", setUser},
+              {field: "surname",state:user.surname, type: "text", placeholder: "Surname",  setUser},
+              {field: "username",state:user.username, type: "text", placeholder: "Username",  setUser},
+              {field: "password",state:user.password, type: "password", placeholder: "Password",  setUser},
+              {field: "phoneNumber",state:user.phone, type: "number", placeholder: "PhoneNumber",  setUser},
+              {field: "email",state:user.email, type: "email", placeholder: "Email",  setUser},
+              {field: "street",state:user.address.street, type: "text", placeholder: "Street", setUser},
+              {field: "city",state:user.address.city, type: "text", placeholder: "City",  setUser},
+              {field: "number",state:user.address.number, type: "number", placeholder: "Number",  setUser},
+              {field: "pc",state:user.address.pc, type: "number", placeholder: "Postal Code",  setUser},
+            ].map(({field,state, type, placeholder, setUser}) => (
               <Form.Group key={field} as={Row} controlId={field}>
                 <Form.Label column sm="2">{placeholder}</Form.Label>
                 <Col sm="10">
-                  <Form.Control type={type} placeholder={placeholder} value={state} name={field} onChange={(e) => onInputChange(e, setState)}/>
+                  <Form.Control type={type} placeholder={placeholder} value={state} name={field}
+                   onChange={(e) => onInputChange(e)}/>
                 </Col>
               </Form.Group>
             ))
@@ -44,10 +110,10 @@ const AddContact = ({showModal, toggleModal, addContact}) => {
       </Modal.Body>
       <Modal.Footer>
         <Button variant="secondary" onClick={toggleModal}>
-          Close
+          Cancel
         </Button>
-        <Button variant="primary" onClick={() => {}}>
-          Add
+        <Button variant="primary" onClick={handleSubmit}>
+          Register
         </Button>
       </Modal.Footer>
     </Modal>

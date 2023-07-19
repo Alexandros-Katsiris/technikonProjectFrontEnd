@@ -20,6 +20,11 @@ code {
   padding:50%
 }
 
+main{
+  height:870px
+  /* padding: 60px; */
+}
+
 footer {
   grid-area: footer;
   text-align: center;

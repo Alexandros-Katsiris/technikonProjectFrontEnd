@@ -19,11 +19,11 @@ const Register = () => {
   });
 
   const handleChange = (event) => {
-    const { name: firstName, value } = event.target;
+    const { name: name, value } = event.target;
 
     if (
       ["streetNumber", "streetName", "zipcode", "floorNumber"].includes(
-        firstName
+        name
       )
     ) {
       setUser((prevState) => ({
@@ -32,11 +32,11 @@ const Register = () => {
         address: {
           ...prevState.address,
 
-          [firstName]: value,
+          [name]: value,
         },
       }));
     } else {
-      setUser((prevState) => ({ ...prevState, [firstName]: value }));
+      setUser((prevState) => ({ ...prevState, [name]: value }));
     }
   };
 

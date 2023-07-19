@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
 import Login from "../form/Login";
 import { useNavigate } from "react-router-dom";
+import AddContact from "./AddUser";
 
 
 
 function Navbar() {
+
+  const [showModal,setShowModal] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -18,6 +22,14 @@ function Navbar() {
   const navigateRegister = () => {
     navigate("register");
   };
+
+  const toggleModal = () => {
+    setShowModal((show) => !show);
+  };
+
+  const addContact = async () =>{
+    
+  }
 
   return (
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -95,12 +107,18 @@ function Navbar() {
           <button class="btn btn-primary" type="button" onClick={navigateLogin} style={{marginRight:"20px"}}>
             Login
           </button>
-          <button class="btn btn-primary" type="button" onClick={navigateRegister}>
+          <button class="btn btn-primary" type="button" onClick={toggleModal}>
             Register
           </button>
         </div>
       </div>
+      <AddContact
+          showModal={showModal}
+          toggleModal={toggleModal}
+          addContact={addContact}
+        />
     </nav>
+    
   );
 }
 
