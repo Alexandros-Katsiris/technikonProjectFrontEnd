@@ -3,26 +3,7 @@ import { useState } from 'react';
 import {Modal, Form, Button, Row, Col} from 'react-bootstrap';
 import { createUserApi } from '../api/UserApiService';
 
-const AddContact = ({showModal, toggleModal, addContact}) => {
-  // const [firstname, setFirstname] = useState("");
-  // const [surname, setSurname] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [tin, setTin] = useState("");
-  // const [username, setUsername] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [address, setAddress] = useState({
-  //   street: "",
-  //   city: "",
-  //   number: "",
-  //   pc: ""
-  // });
-
-  // const onInputChange = (e,setState) => {
-  //   const value = e.target.value;
-  //   setState(value);
-  // };
-
+const AddContact = ({showModal, toggleModal}) => {
   
     const [user, setUser] = useState({
       tin: "",

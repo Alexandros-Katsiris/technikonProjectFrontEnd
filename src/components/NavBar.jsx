@@ -67,7 +67,7 @@ function Navbar() {
             <li class="nav-item">
               <a
                 class="nav-link"
-                href="javascript:void(0)"
+                href="properties"
                 style={{ color: "whitesmoke", fontSize: 18 }}
               >
                 Properties
