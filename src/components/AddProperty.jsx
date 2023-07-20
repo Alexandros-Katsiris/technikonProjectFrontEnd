@@ -53,7 +53,8 @@ const AddProperty = ({ showModal, toggleModal }) => {
 
   return (
     <Modal centered show={showModal} onHide={toggleModal} size="lg">
-      <Modal.Header closeButton>
+      <div className='rounded-2' style={{ background: '#7398CF',}}>
+      <Modal.Header closeButton style={{borderBottom: 0}}>
         <Modal.Title>Add Property</Modal.Title>
       </Modal.Header>
       <Modal.Body>
@@ -137,7 +138,7 @@ const AddProperty = ({ showModal, toggleModal }) => {
           </Form.Group>
         </Form>
       </Modal.Body>
-      <Modal.Footer>
+      <Modal.Footer style={{borderTop: 0}}>
         <Button variant="secondary" onClick={toggleModal}>
           Cancel
         </Button>
@@ -145,6 +146,7 @@ const AddProperty = ({ showModal, toggleModal }) => {
           Register
         </Button>
       </Modal.Footer>
+      </div>
     </Modal>
   );
 };

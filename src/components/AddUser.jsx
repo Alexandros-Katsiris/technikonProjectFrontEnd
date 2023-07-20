@@ -60,12 +60,12 @@ const AddContact = ({showModal, toggleModal}) => {
 
   return (
     <div >
-      <Modal className='modal' show={showModal} centered onHide={toggleModal} >
-        <div className='rounded-2' style={{ background: '#7398CF', margin: 0}}>
-        <Modal.Header closeButton>
+      <Modal className='modal' show={showModal} centered onHide={toggleModal} size='lg'>
+        <div className='rounded-2' style={{ background: '#7398CF',}}>
+        <Modal.Header closeButton style={{borderBottom: 0}}>
           <Modal.Title>Register</Modal.Title>
         </Modal.Header >
-        <Modal.Body>         
+        <Modal.Body >         
           <Form >
             {
               [
@@ -74,7 +74,7 @@ const AddContact = ({showModal, toggleModal}) => {
                 {field: "surname",state:user.surname, type: "text", placeholder: "Surname",  setUser},
                 {field: "username",state:user.username, type: "text", placeholder: "Username",  setUser},
                 {field: "password",state:user.password, type: "password", placeholder: "Password",  setUser},
-                {field: "phoneNumber",state:user.phone, type: "number", placeholder: "PhoneNumber",  setUser},
+                {field: "phoneNumber",state:user.phone, type: "number", placeholder: "Phone Number",  setUser},
                 {field: "email",state:user.email, type: "email", placeholder: "Email",  setUser},
                 {field: "street",state:user.address.street, type: "text", placeholder: "Street", setUser},
                 {field: "city",state:user.address.city, type: "text", placeholder: "City",  setUser},
@@ -92,7 +92,7 @@ const AddContact = ({showModal, toggleModal}) => {
             }
           </Form>
         </Modal.Body>
-        <Modal.Footer>
+        <Modal.Footer style={{borderTop: 0}}>
           <Button variant="secondary" onClick={toggleModal}>
             Cancel
           </Button>
