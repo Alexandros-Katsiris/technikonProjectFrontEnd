@@ -61,10 +61,11 @@ const AddContact = ({showModal, toggleModal}) => {
   return (
     <div >
       <Modal className='modal' show={showModal} centered onHide={toggleModal} size='lg'>
-        <div className='rounded-2' style={{ background: '#7398CF',}}>
+        <div className='rounded-2' >
         <Modal.Header closeButton style={{borderBottom: 0}}>
           <Modal.Title>Register</Modal.Title>
         </Modal.Header >
+        <div style={{ background: '#ABAFB1',}}>
         <Modal.Body >         
           <Form >
             {
@@ -92,14 +93,16 @@ const AddContact = ({showModal, toggleModal}) => {
             }
           </Form>
         </Modal.Body>
+        
         <Modal.Footer style={{borderTop: 0}}>
-          <Button variant="secondary" onClick={toggleModal}>
+          <Button variant="secondary" onClick={toggleModal} style={{background: 'transparent', borderColor:'#0F46CE', color: '#0F46CE'}}>
             Cancel
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="primary" onClick={handleSubmit} style={{background: '#0F46CE', borderColor:'#0F46CE', alignContent:'left'}} >
             Register
           </Button>
         </Modal.Footer>
+        </div>
         </div>
       </Modal>
       </div>

@@ -32,8 +32,8 @@ function Navbar() {
   }
 
   return (
-    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-      <div class="container-fluid">
+    <nav class="navbar navbar-expand-sm navbar-dark" style={{background: '#0F46CE', height: "72px"}} >
+      <div class="container-fluid" >
         <Link to="/">
           <img
             src={logo}
@@ -53,57 +53,24 @@ function Navbar() {
       >
         <span class="navbar-toggler-icon"></span>
       </button> */}
-        <div class="collapse navbar-collapse" id="mynavbar">
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="register"
-                style={{ color: "whitesmoke", fontSize: 18 }}
-              >
-                Profile
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="properties"
-                style={{ color: "whitesmoke", fontSize: 18 }}
-              >
-                Properties
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="javascript:void(0)"
-                style={{ color: "whitesmoke", fontSize: 18 }}
-              >
-                About Us
-              </a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="nav-link"
-                href="javascript:void(0)"
-                style={{ color: "whitesmoke", fontSize: 18 }}
-              >
-                Contact Us
-              </a>
-            </li>
-
+        <div class="collapse navbar-collapse" id="mynavbar" >
+          <div className='ms-auto'>
+            
             {/* <h6>THE MOST COMPLETE DEVELOPERS IN THE WORLD</h6> */}
-            <form class="d-flex" style={{ paddingLeft: "100px" }}>
+            
+            <form className="d-flex" >
               <input
-                class="form-control me-2"
+                className="form-control me-2 align-center"
                 type="text"
                 placeholder="Search"
+                style={{background:"rgba(255, 255, 255, 0.12)", color:"rgba(255, 255, 255, 0.50)", }}
               />
-              <button class="btn btn-primary" type="button">
+              {/* <button class="btn btn-primary" type="button" align="right" >
                 Search
-              </button>
+              </button> */}
             </form>
-          </ul>
+            
+          </div>
           <button class="btn btn-primary" type="button" onClick={navigateLogin} style={{marginRight:"20px"}}>
             Login
           </button>
