@@ -62,8 +62,8 @@ function Navbar() {
                 Search
               </button> */}
             </form>
-          </ul>
-          <button class="btn btn-primary" type="button" onClick={navigateLogin} style={{marginRight:"20px"}}>
+          
+          <button class="btn btn-primary" type="button" onClick={toggleModalLogin} style={{marginRight:"20px"}}>
             Login
           </button>
           <button
@@ -85,7 +85,9 @@ function Navbar() {
         toggleModal={toggleModalLogin}
         login={login}
       />
+      </div>
     </nav>
+    
   );
 }
 
