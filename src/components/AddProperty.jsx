@@ -35,6 +35,7 @@ const AddProperty = ({ showModal, toggleModal }) => {
     } else {
       setProperty((prevState) => ({ ...prevState, [name]: value }));
     }
+    console.log(event.target.name)
   };
 
   const handleSubmit = (event) => {
@@ -51,9 +52,9 @@ const AddProperty = ({ showModal, toggleModal }) => {
   //  const {street, city,number,pc} = address;
 
   return (
-    <Modal show={showModal} onHide={toggleModal}>
+    <Modal centered show={showModal} onHide={toggleModal} size="lg">
       <Modal.Header closeButton>
-        <Modal.Title>Register</Modal.Title>
+        <Modal.Title>Add Property</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -62,21 +63,14 @@ const AddProperty = ({ showModal, toggleModal }) => {
               field: "e9Number",
               state: property.e9Number,
               type: "number",
-              placeholder: "e9Number",
+              placeholder: "E9",
               setProperty,
             },
             {
               field: "yearOfConstruction",
               state: property.yearOfConstruction,
-              type: "text",
-              placeholder: "yearOfConstruction",
-              setProperty,
-            },
-            {
-              field: "propertyType",
-              state: property.propertyType,
-              type: Dropdown,
-              placeholder: "PropertyType",
+              type: "date",
+              placeholder: "Construction Date",
               setProperty,
             },
             {
@@ -86,7 +80,6 @@ const AddProperty = ({ showModal, toggleModal }) => {
               placeholder: "Street",
               setProperty,
             },
-            //   {field: "userId",state:property.webUser.id, type: "number", placeholder: "City",  setProperty},
             {
               field: "city",
               state: property.address.city,
@@ -115,6 +108,7 @@ const AddProperty = ({ showModal, toggleModal }) => {
               </Form.Label>
               <Col sm="10">
                 <Form.Control
+                  style={{margin: "2px"}}
                   type={type}
                   placeholder={placeholder}
                   value={state}
@@ -124,6 +118,23 @@ const AddProperty = ({ showModal, toggleModal }) => {
               </Col>
             </Form.Group>
           ))}
+          <Form.Group key="propertyType" as={Row} controlId={"propertyType"}>
+            <Form.Label column sm="2">
+              Property Type
+            </Form.Label>
+            <Col sm="10">
+              <Form.Select
+                aria-label="Default select example"
+                onChange={(e) => onInputChange(e)}
+              >
+                <option>Select property type</option>
+                <option name = "propertyType" value="0">Detached House</option>
+                <option name = "propertyType" value="1">Maisonette</option>
+                <option name = "propertyType" value="2">Apartment Building</option>
+                <option name = "propertyType" value="3">Flat</option>
+              </Form.Select>
+            </Col>
+          </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>

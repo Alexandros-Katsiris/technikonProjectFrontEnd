@@ -65,7 +65,7 @@ const AddContact = ({showModal, toggleModal}) => {
         <Modal.Header closeButton>
           <Modal.Title>Register</Modal.Title>
         </Modal.Header >
-        <Modal.Body >         
+        <Modal.Body>         
           <Form >
             {
               [
@@ -85,7 +85,7 @@ const AddContact = ({showModal, toggleModal}) => {
                   <Form.Label column sm="2">{placeholder}</Form.Label>
                   <Col sm="10">
                     <Form.Control type={type} placeholder={placeholder} value={state} name={field}
-                    onChange={(e) => onInputChange(e)}/>
+                    onChange={(e) => onInputChange(e)} style={{margin:"2px"}}/>
                   </Col>
                 </Form.Group>
               ))
