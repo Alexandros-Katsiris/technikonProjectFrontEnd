@@ -2,34 +2,27 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
-import Login from "../form/Login";
 import { useNavigate } from "react-router-dom";
 import AddContact from "./AddUser";
-
-
+import Login from "./Login";
 
 function Navbar() {
-
-  const [showModal,setShowModal] = useState(false);
-
+  const [showModalLogin, setShowModalLogin] = useState(false);
+  const [showModalRegister, setShowModalRegister] = useState(false);
 
   const navigate = useNavigate();
 
-  const navigateLogin = () => {
-    navigate("login");
+  const toggleModalRegister = () => {
+    setShowModalRegister((show) => !show);
   };
 
-  const navigateRegister = () => {
-    navigate("register");
+  const toggleModalLogin = () => {
+    setShowModalLogin((show) => !show);
   };
 
-  const toggleModal = () => {
-    setShowModal((show) => !show);
-  };
+  const addContact = async () => {};
 
-  const addContact = async () =>{
-    
-  }
+  const login = async () => {};
 
   return (
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
@@ -104,21 +97,34 @@ function Navbar() {
               </button>
             </form>
           </ul>
-          <button class="btn btn-primary" type="button" onClick={navigateLogin} style={{marginRight:"20px"}}>
+          <button
+            class="btn btn-primary"
+            type="button"
+            onClick={toggleModalLogin}
+            style={{ marginRight: "20px" }}
+          >
             Login
           </button>
-          <button class="btn btn-primary" type="button" onClick={toggleModal}>
+          <button
+            class="btn btn-primary"
+            type="button"
+            onClick={toggleModalRegister}
+          >
             Register
           </button>
         </div>
       </div>
       <AddContact
-          showModal={showModal}
-          toggleModal={toggleModal}
-          addContact={addContact}
-        />
+        showModal={showModalRegister}
+        toggleModal={toggleModalRegister}
+        addContact={addContact}
+      />
+      <Login
+        showModal={showModalLogin}
+        toggleModal={toggleModalLogin}
+        login={login}
+      />
     </nav>
-    
   );
 }
 
