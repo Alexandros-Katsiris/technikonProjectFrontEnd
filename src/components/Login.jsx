@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import {Modal, Form, Button, Row, Col} from 'react-bootstrap';
 import { loginUserApi } from '../api/UserApiService';
+import { AuthContext } from "../AuthContext";
 
 const Login = ({showModal, toggleModal}) => {
   const [credentials, setCredentials] = useState({
@@ -12,13 +13,20 @@ const Login = ({showModal, toggleModal}) => {
   const onInputChange = (event) => {
     const { name: name, value } = event.target;
     setCredentials((prevState) => ({ ...prevState, [name]: value }));
+    console.log(event.target)
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUserApi(credentials)
       .then((response) => {
-        console.log(response.data);
+        if(response.status===200){
+            console.log(response.data);
+            return response.json;
+        }else{
+            alert("Wrong Credentials")
+        }
+        
       })
       .catch((error) => {
         console.log(error);
@@ -40,47 +48,41 @@ const Login = ({showModal, toggleModal}) => {
           </Modal.Header>
           <Modal.Body>
             <Form>
-              {[
-                {
-                  field: "username",
-                  state: credentials.username,
-                  type: "text",
-                  placeholder: "username",
-                  setCredentials,
-                },
-                {
-                  field: "password",
-                  state: credentials.password,
-                  type: "password",
-                  placeholder: "Password",
-                  setCredentials,
-                },
-              ].map(({ field, state, type, placeholder, setCredentials }) => (
-                <Form.Group key={field} as={Row} controlId={field}>
-                  <Form.Label column sm="2">
-                    {placeholder}
+                <Form.Group key= "username">
+                  <Form.Label column sm="2"> Username
                   </Form.Label>
-                  <Col sm="10">
                     <Form.Control
-                      type={type}
-                      placeholder={placeholder}
-                      value={state}
-                      name={field}
+                      type="text"
+                      placeholder="Enter username"
+                      name = "username"
+                      value = {credentials.username}
                       onChange={(e) => onInputChange(e)}
                       style={{ margin: "2px" }}
                     />
-                  </Col>
                 </Form.Group>
-              ))}
+                <Form.Group key = "password">
+                  <Form.Label column sm="2">Password
+                  </Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Enter password"
+                      name = "password"
+                      value = {credentials.password}
+                      onChange={(e) => onInputChange(e)}
+                      style={{ margin: "2px" }}
+                    />
+                </Form.Group>
             </Form>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={toggleModal}>
               Cancel
             </Button>
+            <AuthContext.Provider value={handleSubmit}/>
             <Button variant="primary" onClick={handleSubmit}>
-              Register
+              Login
             </Button>
+            
           </Modal.Footer>
         </div>
       </Modal>

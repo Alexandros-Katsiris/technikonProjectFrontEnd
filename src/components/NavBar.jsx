@@ -47,7 +47,7 @@ function Navbar() {
         <span class="navbar-toggler-icon"></span>
       </button> */}
         <div class="collapse navbar-collapse" id="mynavbar" >
-          <div className='ms-auto'>
+          <div className='d-flex ms-auto'>
             
             {/* <h6>THE MOST COMPLETE DEVELOPERS IN THE WORLD</h6> */}
             
