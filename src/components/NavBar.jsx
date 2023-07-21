@@ -80,11 +80,6 @@ function Navbar() {
         toggleModal={toggleModalRegister}
         addContact={addContact}
       />
-      <Login
-        showModal={showModalLogin}
-        toggleModal={toggleModalLogin}
-        login={login}
-      />
       </div>
     </nav>
     

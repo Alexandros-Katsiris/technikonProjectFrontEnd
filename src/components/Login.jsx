@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   Modal,
@@ -16,11 +16,15 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
+import { useNavigate } from "react-router-dom";
+import AddUser from "./AddUser";
 
 const Login = () => {
   const toggleModal = () => {
     setShowModal((show) => !show);
   };
+
+  const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
     username: "",
@@ -41,7 +45,6 @@ const Login = () => {
       .then((response) => {
         if (response.status === 200) {
           console.log(response.data);
-          return response.json;
         } else {
           alert("Wrong Credentials");
         }
@@ -66,20 +69,35 @@ const Login = () => {
               }}
             />
             <img src={technikon} alt="frame" style={{ marginTop: "32px" }} />
-
-            <button
+          </div>
+          {/* <button
               onClick={
                 toggleModal
               }
             >
               Login
-            </button>
-            <Modal show={showModal} onHide={toggleModal}>
-              <ModalHeader>Login</ModalHeader>
-              <ModalBody>
-                <Form>
+            </button> */}
+          <div className="definetelyNotModal">
+            <div className="title">
+              <h2>Login</h2>
+            </div>
+            <div className="body">
+              <Form className="form">
+                <div
+                  style={{
+                    width: "502px",
+                    height: "106px",
+                    marginBottom: "18px",
+                  }}
+                >
                   <Form.Group key="username">
-                    <Form.Label column sm="2">
+                    <Form.Label
+                      style={{
+                        marginBottom: "0px",
+                        paddingLeft: "4px",
+                        paddingRight: "4px",
+                      }}
+                    >
                       {" "}
                       Username
                     </Form.Label>
@@ -89,11 +107,31 @@ const Login = () => {
                       name="username"
                       value={credentials.username}
                       onChange={(e) => onInputChange(e)}
+                      style={{
+                        border: "1px",
+                        paddingTop: "8px",
+                        paddingBottom: "8px",
+                        paddingLeft: "16px",
+                        paddingRight: "16px",
+                      }}
                     />
                   </Form.Group>
-                  <Form.Group key="password">
-                    <Form.Label column sm="2">
-                      {" "}
+                </div>
+                <div
+                  style={{
+                    width: "502px",
+                    height: "106px",
+                    marginBottom: "18px",
+                  }}
+                >
+                  <Form.Group key="password" style={{}}>
+                    <Form.Label
+                      style={{
+                        marginBottom: "0px",
+                        paddingLeft: "4px",
+                        paddingRight: "4px",
+                      }}
+                    >
                       Password
                     </Form.Label>
                     <Form.Control
@@ -102,14 +140,57 @@ const Login = () => {
                       name="password"
                       value={credentials.password}
                       onChange={(e) => onInputChange(e)}
+                      style={{
+                        border: "1px",
+                        paddingTop: "8px",
+                        paddingBottom: "8px",
+                        paddingLeft: "16px",
+                        paddingRight: "16px",
+                      }}
                     />
                   </Form.Group>
-                </Form>
-              </ModalBody>
-            </Modal>
+                </div>
+              </Form>
+              <div className="forgotPasswordDiv">
+                <a className="forgotPassword" href="#">
+                  Forgot Password
+                </a>
+              </div>
+              <div className="button">
+                <Button
+                  className="btn btn-primary"
+                  type="button"
+                  size="lg"
+                  onClick={() => navigate("/home")}
+                >
+                  Sign In
+                </Button>
+              </div>
+              <div
+                style={{
+                  marginLeft: "94px",
+                  marginRight: "94px",
+                }}
+              >
+                
+                <h6 className="hr-lines" >OR</h6>
+                
+              </div>
+              <div className="button">
+                <Button
+                  class="btn btn-primary"
+                  type="button"
+                  size="lg"
+                  onClick={toggleModal}
+                >
+                  Sign Up
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
+      <AddUser showModal={showModal} toggleModal={toggleModal} />
     </div>
     /* <Modal
         className="modal"
