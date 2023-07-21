@@ -1,32 +1,50 @@
 import React from "react";
-import { useState } from 'react';
-import {Modal, Form, Button, Row, Col} from 'react-bootstrap';
-import { loginUserApi } from '../api/UserApiService';
+import { useState } from "react";
+import {
+  Modal,
+  Form,
+  Button,
+  Row,
+  Col,
+  ModalTitle,
+  ModalHeader,
+  ModalBody,
+} from "react-bootstrap";
+import { loginUserApi } from "../api/UserApiService";
 import { AuthContext } from "../AuthContext";
+import "./Login.css";
+import { Link } from "react-router-dom";
+import technikon from "./img/Frame.png";
+import logo from "./img/Vector.png";
 
-const Login = ({showModal, toggleModal}) => {
+const Login = () => {
+  const toggleModal = () => {
+    setShowModal((show) => !show);
+  };
+
   const [credentials, setCredentials] = useState({
     username: "",
     password: "",
   });
 
+  const [showModal, setShowModal] = useState(false);
+
   const onInputChange = (event) => {
     const { name: name, value } = event.target;
     setCredentials((prevState) => ({ ...prevState, [name]: value }));
-    console.log(event.target)
+    console.log(event.target);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUserApi(credentials)
       .then((response) => {
-        if(response.status===200){
-            console.log(response.data);
-            return response.json;
-        }else{
-            alert("Wrong Credentials")
+        if (response.status === 200) {
+          console.log(response.data);
+          return response.json;
+        } else {
+          alert("Wrong Credentials");
         }
-        
       })
       .catch((error) => {
         console.log(error);
@@ -34,8 +52,66 @@ const Login = ({showModal, toggleModal}) => {
   };
 
   return (
-    <div>
-      <Modal
+    <div className="image">
+      <div className="gradient">
+        <div>
+          <div>
+            <img
+              src={logo}
+              alt="logo"
+              style={{
+                marginLeft: "32px",
+                marginTop: "32px",
+                marginRight: "9.51px",
+              }}
+            />
+            <img src={technikon} alt="frame" style={{ marginTop: "32px" }} />
+
+            <button
+              onClick={
+                toggleModal
+              }
+            >
+              Login
+            </button>
+            <Modal show={showModal} onHide={toggleModal}>
+              <ModalHeader>Login</ModalHeader>
+              <ModalBody>
+                <Form>
+                  <Form.Group key="username">
+                    <Form.Label column sm="2">
+                      {" "}
+                      Username
+                    </Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter username"
+                      name="username"
+                      value={credentials.username}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                  </Form.Group>
+                  <Form.Group key="password">
+                    <Form.Label column sm="2">
+                      {" "}
+                      Password
+                    </Form.Label>
+                    <Form.Control
+                      type="password"
+                      placeholder="Enter password"
+                      name="password"
+                      value={credentials.password}
+                      onChange={(e) => onInputChange(e)}
+                    />
+                  </Form.Group>
+                </Form>
+              </ModalBody>
+            </Modal>
+          </div>
+        </div>
+      </div>
+    </div>
+    /* <Modal
         className="modal"
         show={showModal}
         centered
@@ -86,7 +162,7 @@ const Login = ({showModal, toggleModal}) => {
           </Modal.Footer>
         </div>
       </Modal>
-    </div>
+    </div> */
   );
 };
 

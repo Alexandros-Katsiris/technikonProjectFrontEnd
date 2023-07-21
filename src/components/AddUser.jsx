@@ -4,7 +4,7 @@ import { Modal, Form, Button, Row, Col } from "react-bootstrap";
 import { createUserApi } from "../api/UserApiService";
 import "./AddUser.jsx";
 
-const AddContact = ({ showModal, toggleModal }) => {
+const AddUser = ({ showModal, toggleModal }) => {
   const [user, setUser] = useState({
     tin: "",
     firstName: "",
@@ -196,4 +196,4 @@ const AddContact = ({ showModal, toggleModal }) => {
   );
 };
 
-export default AddContact;
+export default AddUser;

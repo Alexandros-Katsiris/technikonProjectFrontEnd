@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
 import { useNavigate } from "react-router-dom";
-import AddContact from "./AddUser";
+import AddUser from "./AddUser";
 import Login from "./Login";
 
 function Navbar() {
@@ -63,7 +63,7 @@ function Navbar() {
               </button> */}
             </form>
           
-          <button class="btn btn-primary" type="button" onClick={toggleModalLogin} style={{marginRight:"20px"}}>
+          {/* <button class="btn btn-primary" type="button" onClick={toggleModalLogin} style={{marginRight:"20px"}}>
             Login
           </button>
           <button
@@ -72,10 +72,10 @@ function Navbar() {
             onClick={toggleModalRegister}
           >
             Register
-          </button>
+          </button> */}
         </div>
       </div>
-      <AddContact
+      <AddUser
         showModal={showModalRegister}
         toggleModal={toggleModalRegister}
         addContact={addContact}
