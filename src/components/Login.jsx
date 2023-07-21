@@ -45,6 +45,7 @@ const Login = () => {
       .then((response) => {
         if (response.status === 200) {
           console.log(response.data);
+          navigate("/home")
         } else {
           alert("Wrong Credentials");
         }
@@ -161,7 +162,7 @@ const Login = () => {
                   className="btn btn-primary"
                   type="button"
                   size="lg"
-                  onClick={() => navigate("/home")}
+                  onClick={handleSubmit}
                 >
                   Sign In
                 </Button>
