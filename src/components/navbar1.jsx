@@ -34,7 +34,7 @@ function Navbar1() {
             <Link to="/">
                 <img src={technikon} alt="frame" />
             </Link>
-            <div class="collapse navbar-collapse"style={{ marginLeft: "10   0px" }}>
+            <div class="collapse navbar-collapse">
                 <div className='d-flex ms-auto'>
                     <form className="d-flex" style={{ marginRight: "10px" }} >
                         <input
@@ -45,7 +45,7 @@ function Navbar1() {
                                 background: "rgba(255, 255, 255, 0.12)", color: "rgba(255, 255, 255, 0.50)",
                                 border: "1px solid", borderRadius: "12px", display: "flex", width: "356px", height: "48px",
                                 padding: "0px 4px 0px 8px", alignItems: "center", gap: "8px", flexShrink: "0", backgroundImage: `url(${search})`,
-                                backgroundRepeat: 'no-repeat', backgroundPosition: 'left', textAlign: "center",
+                                backgroundRepeat: 'no-repeat', backgroundPosition: 'left', textAlign: "center"
                             }}
                             onChange={handleChange}
                             value={searchInput}
@@ -80,8 +80,8 @@ function Navbar1() {
                         </div>
                     </div>
                     <div>
-                        <div class="dropdown1" style={{direction: "rtl",}}>
-                            <button class="btn btn-link dropdown pull-left account-menu-btn" style={{direction: "ltr",}}>
+                        <div class="dropdown" style={{direction: "rtl",}}>
+                            <button class="dotmenu" style={{direction: "ltr",}}>
                                 <img src={menuDot}
                                     style={{
                                         

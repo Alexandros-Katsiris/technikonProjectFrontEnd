@@ -26,11 +26,12 @@
     position: relative;
     display: inline-block;
 }
+
 .dropdown1 {
     position: relative;
     display: inline-block;
     width: 370px;
-    
+
 }
 
 .dropdown-content {
@@ -62,13 +63,13 @@
     background-color: #216cdbd7
 }
 
-.avatar{
+.avatar {
     display: flex;
-width: 32px;
-height: 32px;
-justify-content: center;
-align-items: center;
-flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .dropbtndot {
@@ -86,4 +87,11 @@ flex-shrink: 0;
     flex-shrink: 0;
     border: none;
     cursor: pointer;
+}
+
+.dotmenu {
+    border-radius: 12px;
+    margin-top: 9px;
+    background-color: #0F46CE;
+    border: 0;
 }
