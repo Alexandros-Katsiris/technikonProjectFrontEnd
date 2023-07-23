@@ -8,7 +8,7 @@ const App = () => (
   <div className="App">
     <Routes>
       <Route index element={<Login showModal="true" toggleModal="true"/>} />
-      <Route path="/" element={<Layout />}>
+      <Route path="/menu" element={<Layout />}>
         <Route exact path = "home" elements={<Home/>}/>
         <Route exact path="properties" element={<Properties/>} />
       </Route>

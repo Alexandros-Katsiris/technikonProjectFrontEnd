@@ -26,6 +26,12 @@
     position: relative;
     display: inline-block;
 }
+.dropdown1 {
+    position: relative;
+    display: inline-block;
+    width: 370px;
+    
+}
 
 .dropdown-content {
     display: none;
