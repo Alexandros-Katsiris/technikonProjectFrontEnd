@@ -4,6 +4,8 @@ import Navbar from "./NavBar";
 import TabMenu from "./TabMenu";
 import { AuthContext } from "../AuthContext";
 import Navbar1 from "./navbar1";
+import ListOfUsers from "./ListOfUsers";
+
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -16,7 +18,8 @@ const Layout = (props) => {
       <Navbar1 />
       <TabMenu />
       <main>
-        <Outlet/>
+        <ListOfUsers/>
+      <Outlet/>
       </main>
     </div>
   );

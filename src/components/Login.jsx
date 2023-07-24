@@ -181,7 +181,7 @@ const Login = () => {
               </div>
               <div className="button">
                 <Button
-                  class="btn btn-primary"
+                  className="btn btn-primary"
                   type="button"
                   size="lg"
                   onClick={toggleModal}

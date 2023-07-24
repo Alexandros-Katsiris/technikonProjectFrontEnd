@@ -10,23 +10,23 @@ function TabMenu(){
 const navigate = useNavigate();
 
 return (
-    <nav class="navbar navbar-expand-sm navbar-light" style={{background: '#FFF', height: "56px"}} >
-      <div class="container-fluid" >
+    <nav className="navbar navbar-expand-sm navbar-light" style={{background: '#FFF', height: "56px"}} >
+      <div className="container-fluid" >
    
-        <div class="collapse navbar-collapse" id="mynavbar" >
-          <ul class="navbar-nav me-auto">
-            <li class="nav-item">
+        <div className="collapse navbar-collapse" id="mynavbar" >
+          <ul className="navbar-nav me-auto">
+            <li className="nav-item">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="register"
                 style={{ color: "black", fontSize: 18 }}
               >
                 Profile
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
-                class="nav-link"
+                className="nav-link"
                 href="/home/properties"
                 
                 style={{ color: "black", fontSize: 18 }}
@@ -34,19 +34,19 @@ return (
                 Properties
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
                 class="nav-link"
-                href="/home/aboutUs"
+                href="javascript:void(0)"
                 style={{ color: "black", fontSize: 18 }}
               >
                 About Us
               </a>
             </li>
-            <li class="nav-item">
+            <li className="nav-item">
               <a
-                class="nav-link"
-                href="#"
+                className="nav-link"
+                href="javascript:void(0)"
                 style={{ color: "black", fontSize: 18 }}
               >
                 Contact Us

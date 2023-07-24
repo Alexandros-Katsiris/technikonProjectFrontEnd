@@ -25,8 +25,8 @@ function Navbar() {
   const login = async () => {};
 
   return (
-    <nav class="navbar navbar-expand-sm navbar-dark" style={{background: '#0F46CE', height: "72px"}} >
-      <div class="container-fluid" >
+    <nav className="navbar navbar-expand-sm navbar-dark" style={{background: '#0F46CE', height: "72px"}} >
+      <div className="container-fluid" >
         <Link to="/">
           <img
             src={logo}
@@ -46,7 +46,7 @@ function Navbar() {
       >
         <span class="navbar-toggler-icon"></span>
       </button> */}
-        <div class="collapse navbar-collapse" id="mynavbar" >
+        <div className="collapse navbar-collapse" id="mynavbar" >
           <div className='d-flex ms-auto'>
             
             {/* <h6>THE MOST COMPLETE DEVELOPERS IN THE WORLD</h6> */}

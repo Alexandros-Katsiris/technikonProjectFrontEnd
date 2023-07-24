@@ -13,9 +13,8 @@ const Properties = () =>{
 
     return(
         <div>
-            <div style={{margin:"20px"}}>
-        <button class="btn btn-primary" type="button" onClick={toggleModal}>Add Property</button>
-        </div>
+        <button className="btn btn-primary" type="button" onClick={toggleModal}>Add Property</button>
+        
         <AddProperty
             showModal={showModal}
             toggleModal={toggleModal}

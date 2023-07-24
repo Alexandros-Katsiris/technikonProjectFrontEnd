@@ -25,7 +25,7 @@ function Navbar1() {
 
 
     return (
-        <div class="navbar navbar-expand-sm navbar-dark" style={{ background: "rgba(15, 70, 206, 1)", height: "72px", flexShrink: "0" }}>
+        <div className="navbar navbar-expand-sm navbar-dark" style={{ background: "rgba(15, 70, 206, 1)", height: "72px", flexShrink: "0" }}>
             <Link to="/">
                 <img
                     src={logo}
@@ -36,7 +36,7 @@ function Navbar1() {
             <Link to="/">
                 <img src={technikon} alt="frame" />
             </Link>
-            <div class="collapse navbar-collapse">
+            <div className="collapse navbar-collapse">
                 <div className='d-flex ms-auto'>
                     <form className="d-flex" style={{ marginRight: "10px" }} >
                         <input
@@ -54,9 +54,9 @@ function Navbar1() {
                         />
                     </form>
                     <div >
-                        <div class="dropdown">
-                            <button class="dropbtn"><img src={createbutton}></img>create user</button>
-                            <div class="dropdown-content">
+                        <div className="dropdown">
+                            <button className="dropbtn"><img src={createbutton}></img>create user</button>
+                            <div className="dropdown-content">
                                 <a href="Home">Admin</a>
                                 <a href="#">customer</a>
                             </div>
@@ -82,15 +82,15 @@ function Navbar1() {
                         </div>
                     </div>
                     <div>
-                        <div class="dropdown" style={{direction: "rtl",}}>
-                            <button class="dotmenu" style={{direction: "ltr",}}>
+                        <div className="dropdown" style={{direction: "rtl",}}>
+                            <button className="dotmenu" style={{direction: "ltr",}}>
                                 <img src={menuDot}
                                     style={{
                                         
                                         marginLeft: "9px"
                                     }} />
                             </button>
-                            <div class="dropdown-content" style={{direction: "ltr",}}>
+                            <div className="dropdown-content" style={{direction: "ltr",}}>
                                 <a href="#">Settings</a>
                                 <a href="#">Log out</a>
                             </div>
