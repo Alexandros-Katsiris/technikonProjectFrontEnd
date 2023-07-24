@@ -33,22 +33,24 @@ const Login = () => {
 
   const [showModal, setShowModal] = useState(false);
 
+  const [loggedIn, setLoggedIn] = useState(false);
+
+
   const onInputChange = (event) => {
     const { name: name, value } = event.target;
     setCredentials((prevState) => ({ ...prevState, [name]: value }));
-    console.log(event.target);
+    //console.log(event.target);
   };
+
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUserApi(credentials)
       .then((response) => {
-        if (response.status === 200) {
-          console.log(response.data);
-          navigate("/home")
-        } else {
-          alert("Wrong Credentials");
-        }
+        localStorage.setItem("tin",(response.data.data.tin))
+        localStorage.setItem("id",(response.data.data.id))
+          navigate("/home",{ state: response.data.data})
       })
       .catch((error) => {
         console.log(error);

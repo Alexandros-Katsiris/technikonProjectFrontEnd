@@ -1,20 +1,18 @@
 import React, {useState, useEffect} from 'react';
-import axios from 'axios';
 import {Spinner, Alert, Button, ListGroup} from 'react-bootstrap';
-import Contacts from '../../common/Contacts';
-import UserCardActions from '../../common/UserCardActions';
-import SearchBar from '../../common/SearchBar';
-import AddContact from './AddContact';
-import {API} from '../../api';
+import Properties from './Properties';
+import PropertyCard from './PropertyCard';
+import SearchBar from './SearchBar';
+import AddProperty from './AddProperty';
+import { retrievePropertyApi } from '../api/PropertyApiService';
 
-const searchContact = ({username, name, phone}, searchText) => ( 
-  username.toLowerCase().search(searchText.toLowerCase()) !== -1 || 
-  name.toLowerCase().search(searchText.toLowerCase()) !== -1 || 
-  phone.toString().search(searchText) !== -1 
-);
+const searchProperty = () => {} 
+  // username.toLowerCase().search(searchText.toLowerCase()) !== -1 || 
+  // name.toLowerCase().search(searchText.toLowerCase()) !== -1 || 
+  // phone.toString().search(searchText) !== -1
 
 const AxiosApproach = () => {
-  const [contacts, setContacts] = useState([]);
+  const [properties, setProperties] = useState([]);
   const [searchText, setSearchText] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,10 +22,11 @@ const AxiosApproach = () => {
     setError(false);
     setIsLoading(true);
 
-    axios.get(API)
+    retrievePropertyApi(localStorage.getItem("tin"))
       .then(response => {
-          setContacts(response.data);
+          setProperties([response.data.data]);
           setIsLoading(false);
+          console.log(properties)
       })
       .catch(error => {
         setError(error);
@@ -47,10 +46,10 @@ const AxiosApproach = () => {
     setShowModal((show) => !show);
   };
 
-  const addContact = async () => {
+  const addProperty = async () => {
   };
 
-  const deleteContact = async () => {
+  const deleteProperty = async () => {
   };
 
   if (error) {
@@ -61,7 +60,7 @@ const AxiosApproach = () => {
     return <Spinner animation="border" size="lg" />;
   }
 
-  const searchContacts = contacts.filter((contact) => searchContact(contact, searchText));
+  const searchproperties = properties.filter((property) => searchProperty(property, searchText));
 
   return (
       <div>
@@ -69,20 +68,19 @@ const AxiosApproach = () => {
         <div className="text-right">
           <Button onClick={toggleModal}>Add</Button>
         </div>
-        <Contacts>
-          {searchContacts.map((contact) => 
-            <ListGroup.Item key={contact.id}>
-              <UserCardActions
-                contact={contact}
-                deleteContact={deleteContact}
+        <Properties>
+          {properties.map((property) => 
+            <ListGroup.Item key={property.e9Number}>
+              <PropertyCard
+                property={property}
               />
             </ListGroup.Item>
           )}
-        </Contacts>
-        <AddContact
+        </Properties>
+        <AddProperty
           showModal={showModal}
           toggleModal={toggleModal}
-          addContact={addContact}
+          addProperty={addProperty}
         />
       </div>
   );

@@ -1,21 +1,28 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
 import Layout from "./components/Layout";
 import Properties from "./components/Properties";
 import Login from "./components/Login";
+import AboutUs from "./components/AboutUs";
+import { useLocation } from "react-router-dom";
+import { AuthContext } from "./AuthContext";
 
-const App = () => (
-  <div className="App">
-    <Routes>
-      <Route index element={<Login showModal="true" toggleModal="true"/>} />
-      <Route path="/menu" element={<Layout />}>
-        <Route exact path = "home" elements={<Home/>}/>
-        <Route exact path="properties" element={<Properties/>} />
-      </Route>
-    </Routes>
 
-    {/* <Register/> */}
-  </div>
-);
+const App = () => {
+  const { state } = useLocation();
+
+  return (
+    <div className="App">
+        <Routes>
+          <Route index element={<Login />} />
+          <Route path="/home" element={<Layout/>}>
+            <Route path="properties" element={<Properties/>} />
+            <Route path="aboutUs" element={<AboutUs/>}/>
+          </Route>
+        </Routes>
+
+      {/* <Register/> */}
+    </div>
+  );
+};
 
 export default App;

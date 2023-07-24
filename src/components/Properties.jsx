@@ -1,5 +1,6 @@
 import AddProperty from "./AddProperty";
 import { useState } from "react";
+import { PropertyCard } from "./PropertyCard";
 
 const Properties = () =>{
     
@@ -12,12 +13,17 @@ const Properties = () =>{
 
     return(
         <div>
+            <div style={{margin:"20px"}}>
         <button class="btn btn-primary" type="button" onClick={toggleModal}>Add Property</button>
-        
+        </div>
         <AddProperty
             showModal={showModal}
             toggleModal={toggleModal}
             />
+
+<div style={{margin:"20px"}}>
+        <PropertyCard/>
+        </div>
         </div>
     );
     

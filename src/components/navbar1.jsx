@@ -9,6 +9,8 @@ import img from "./img/Img.png";
 import Notification from "./img/Notifications_unread.png"
 import menuDot from "./img/menu-dots-vert.png";
 import AddUser from "./AddUser";
+import { AuthContext } from "../AuthContext";
+import { h1Icon } from "@progress/kendo-svg-icons";
 
 
 function Navbar1() {
