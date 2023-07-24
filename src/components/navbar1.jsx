@@ -22,6 +22,11 @@ function Navbar1() {
         setSearchInput(e.target.value);
     };
 
+    const logOut = () => {
+        localStorage.removeItem("id")
+        localStorage.removeItem("tin")
+    }
+
 
 
     return (
@@ -92,7 +97,7 @@ function Navbar1() {
                             </button>
                             <div className="dropdown-content" style={{direction: "ltr",}}>
                                 <a href="#">Settings</a>
-                                <a href="#">Log out</a>
+                                <a onClick={logOut} href="/">Log out</a>
                             </div>
                         </div>
                     </div>

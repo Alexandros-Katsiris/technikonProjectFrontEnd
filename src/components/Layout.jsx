@@ -8,18 +8,29 @@ import ListOfUsers from "./ListOfUsers";
 
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Properties from "./Properties";
 import { Routes, Route } from "react-router-dom";
 
 const Layout = (props) => {
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (localStorage.getItem("tin") === null) {
+      navigate("/");
+    }
+  }, [])
+
+  console.log(localStorage.getItem("tin"));
+  if(localStorage.getItem("tin") != null)
   return (
     <div className="Layout">
       <Navbar1 />
       <TabMenu />
       <main>
-        <ListOfUsers/>
-      <Outlet/>
+        <ListOfUsers />
+        <Outlet />
       </main>
     </div>
   );
