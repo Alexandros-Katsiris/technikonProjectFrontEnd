@@ -12,7 +12,7 @@ const Properties = () =>{
 
     return(
         <div>
-        <button class="btn btn-primary" type="button" onClick={toggleModal}>Add Property</button>
+        <button className="btn btn-primary" type="button" onClick={toggleModal}>Add Property</button>
         
         <AddProperty
             showModal={showModal}

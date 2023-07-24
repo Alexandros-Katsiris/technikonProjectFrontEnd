@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
 import { createUserApi } from "../api/UserApiService";
 import "./AddUser.css";
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 const AddUser = ({ showModal, toggleModal }) => {
   const [user, setUser] = useState({
@@ -148,8 +150,12 @@ const AddUser = ({ showModal, toggleModal }) => {
                       paddingLeft: "4px",
                       paddingRight: "4px",
                     }}
+                  ><PhoneInput containerStyle={{color:"black"}}
+                  buttonStyle={{color:"#000000"}}
+                  searchStyle={{color:"black"}}
                   >
                     Phone Number
+                    </PhoneInput>
                   </Form.Label>
                   <Form.Control
                     type="number"
@@ -293,8 +299,8 @@ const AddUser = ({ showModal, toggleModal }) => {
                     />
                   </Form.Group>
                 </div>
-                
-              <div className="emailTin">
+
+                <div className="emailTin">
                   <Form.Group key="tin" style={{}}>
                     <Form.Label
                       style={{
@@ -323,59 +329,59 @@ const AddUser = ({ showModal, toggleModal }) => {
                 </div>
               </div>
               <div>
-                  <Form.Group key="username" style={{}}>
-                    <Form.Label
-                      style={{
-                        marginBottom: "0px",
-                        paddingLeft: "4px",
-                        paddingRight: "4px",
-                      }}
-                    >
-                      Username
-                    </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Your username"
-                      name="username"
-                      value={user.username}
-                      onChange={(e) => onInputChange(e)}
-                      style={{
-                        border: "1px",
-                        paddingTop: "8px",
-                        paddingBottom: "8px",
-                        paddingLeft: "16px",
-                        paddingRight: "16px",
-                      }}
-                    />
-                  </Form.Group>
-                </div>
-                <div>
-                  <Form.Group key="password" style={{}}>
-                    <Form.Label
-                      style={{
-                        marginBottom: "0px",
-                        paddingLeft: "4px",
-                        paddingRight: "4px",
-                      }}
-                    >
-                      Password
-                    </Form.Label>
-                    <Form.Control
-                      type="password"
-                      placeholder="Your password"
-                      name="password"
-                      value={user.password}
-                      onChange={(e) => onInputChange(e)}
-                      style={{
-                        border: "1px",
-                        paddingTop: "8px",
-                        paddingBottom: "8px",
-                        paddingLeft: "16px",
-                        paddingRight: "16px",
-                      }}
-                    />
-                  </Form.Group>
-                </div>
+                <Form.Group key="username" style={{}}>
+                  <Form.Label
+                    style={{
+                      marginBottom: "0px",
+                      paddingLeft: "4px",
+                      paddingRight: "4px",
+                    }}
+                  >
+                    Username
+                  </Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Your username"
+                    name="username"
+                    value={user.username}
+                    onChange={(e) => onInputChange(e)}
+                    style={{
+                      border: "1px",
+                      paddingTop: "8px",
+                      paddingBottom: "8px",
+                      paddingLeft: "16px",
+                      paddingRight: "16px",
+                    }}
+                  />
+                </Form.Group>
+              </div>
+              <div>
+                <Form.Group key="password" style={{}}>
+                  <Form.Label
+                    style={{
+                      marginBottom: "0px",
+                      paddingLeft: "4px",
+                      paddingRight: "4px",
+                    }}
+                  >
+                    Password
+                  </Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Your password"
+                    name="password"
+                    value={user.password}
+                    onChange={(e) => onInputChange(e)}
+                    style={{
+                      border: "1px",
+                      paddingTop: "8px",
+                      paddingBottom: "8px",
+                      paddingLeft: "16px",
+                      paddingRight: "16px",
+                    }}
+                  />
+                </Form.Group>
+              </div>
             </Form>
           </Modal.Body>
 
