@@ -26,7 +26,7 @@ const Layout = (props) => {
           <Navbar1 />
           <TabMenu />
           <main>
-            {/* <ListOfUsers /> */}
+          
             <Outlet />
           </main>
         </div>

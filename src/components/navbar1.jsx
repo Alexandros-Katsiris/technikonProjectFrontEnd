@@ -28,14 +28,14 @@ function Navbar1() {
 
     return (
         <div className="navbar navbar-expand-sm navbar-dark" style={{ background: "rgba(15, 70, 206, 1)", height: "72px", flexShrink: "0" }}>
-            <Link to="/">
+            <Link to="/home">
                 <img
                     src={logo}
                     alt="logo"
                     style={{ marginLeft: "10px", marginRight: "10px" }}
                 />
             </Link>
-            <Link to="/">
+            <Link to="/home">
                 <img src={technikon} alt="frame" />
             </Link>
             <div className="collapse navbar-collapse">
@@ -86,7 +86,7 @@ function Navbar1() {
                             </button>
                             <div className="dropdown-content" style={{direction: "ltr",}}>
                                 <a href="#">Settings</a>
-                                <a onClick={logOut} href="/">Log out</a>
+                                <a onClick={logOut} href="/login">Log out</a>
                             </div>
                         </div>
                     </div>
