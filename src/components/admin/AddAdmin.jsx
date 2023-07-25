@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
-import { createUserApi } from "../api/UserApiService";
-import "./AddUser.css";
+import { createUserApi } from "../../api/UserApiService";
+import "../AddUser.css";
 
-const AddUser = ({ showModal, toggleModal }) => {
+const AddAdmin = ({ showModal, toggleModal }) => {
   const [user, setUser] = useState({
     tin: "",
     firstName: "",
@@ -19,7 +19,7 @@ const AddUser = ({ showModal, toggleModal }) => {
       city: "",
       pc: "",
     },
-    role: "user",
+    role: "admin",
   });
 
   const onInputChange = (event) => {
@@ -42,8 +42,8 @@ const AddUser = ({ showModal, toggleModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    toggleModal()
     createUserApi(user)
+    toggleModal()
       .then((response) => {
         console.log(response.data);
       })
@@ -52,7 +52,7 @@ const AddUser = ({ showModal, toggleModal }) => {
       });
   };
 
-
+  //  const {street, city,number,pc} = address;
 
   return (
     <Modal
@@ -413,4 +413,4 @@ const AddUser = ({ showModal, toggleModal }) => {
   );
 };
 
-export default AddUser;
+export default AddAdmin;

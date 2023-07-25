@@ -4,7 +4,6 @@ import { Spinner, Alert, Button, ListGroup } from 'react-bootstrap';
 import Users from './Users';
 import UserCardActions from './UserCardActions';
 import AddUser from '../AddUser';
-import { API } from '../../api/UserCardApi';
 import SearchBar from './SearchBar';
 
 
@@ -26,16 +25,7 @@ const AxiosApproach = () => {
         setError(false);
         setIsLoading(false);
 
-        axios.get(API)
-            .then(response => {
-                setUsers(response.data);
-                setIsLoading(false);
-            })
-            .catch(error => {
-                setError(error);
-                setIsLoading(false);
-            });
-
+        
     };
 
     useEffect(() => {

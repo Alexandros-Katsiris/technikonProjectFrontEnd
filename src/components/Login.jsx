@@ -54,7 +54,7 @@ const Login = () => {
         }else{
           localStorage.setItem("tin",(response.data.data.tin))
           localStorage.setItem("id",(response.data.data.id))
-          localStorage.setItem("isAdmin",(response.data.data.isAdmin))
+          localStorage.setItem("role",(response.data.data.role))
           navigate("/home",{ state: response.data.data})
         }
           
@@ -204,58 +204,6 @@ const Login = () => {
       </div>
       <AddUser showModal={showModal} toggleModal={toggleModal} />
     </div>
-    /* <Modal
-        className="modal"
-        show={showModal}
-        centered
-        onHide={toggleModal}
-        size="lg"
-      >
-        <div className="rounded-2" style={{ background: "#7398CF", margin: 0 }}>
-          <Modal.Header closeButton>
-            <Modal.Title>Login</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            <Form>
-                <Form.Group key= "username">
-                  <Form.Label column sm="2"> Username
-                  </Form.Label>
-                    <Form.Control
-                      type="text"
-                      placeholder="Enter username"
-                      name = "username"
-                      value = {credentials.username}
-                      onChange={(e) => onInputChange(e)}
-                      style={{ margin: "2px" }}
-                    />
-                </Form.Group>
-                <Form.Group key = "password">
-                  <Form.Label column sm="2">Password
-                  </Form.Label>
-                    <Form.Control
-                      type="password"
-                      placeholder="Enter password"
-                      name = "password"
-                      value = {credentials.password}
-                      onChange={(e) => onInputChange(e)}
-                      style={{ margin: "2px" }}
-                    />
-                </Form.Group>
-            </Form>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={toggleModal}>
-              Cancel
-            </Button>
-            <AuthContext.Provider value={handleSubmit}/>
-            <Button variant="primary" onClick={handleSubmit}>
-              Login
-            </Button>
-            
-          </Modal.Footer>
-        </div>
-      </Modal>
-    </div> */
   );
 };
 
