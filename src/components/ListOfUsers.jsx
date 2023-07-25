@@ -58,30 +58,33 @@ const ListOfUsers = () => {
         </div>
       </div>
       <div style={{ columnCount: "6", marginTop: "40px", marginLeft: "80px" }}>
-        <h6>User Name</h6>
+        <h6>Name</h6>
+        <h6>Surname</h6>
         <h6>Phone Number</h6>
         <h6>E-mail</h6>
-        <h6>Date Created</h6>
-        <h6>Last Edited</h6>
-        <h6>Activities</h6>
+        <h6>Tax ID Number</h6>
+        <h6>Actions</h6>
       </div>
-      <Container style={{ marginTop: "50px", maxWidth: "1000px" }}>
-        <ListGroup>
+      {/* <Container style={{ marginTop: "50px", maxWidth: "1000px" }}> */}
+        <ListGroup style={{ columnCount: "6", marginTop: "40px", marginLeft: "45px", marginRight: "80px" }}>
           {users.map((user) => {
             return (
-              <ListGroup.Item key={user.id}>
-                <Card style={{ width: "18rem" }}>
-                  <ListGroup variant="flush">
-                    <ListGroup.Item>{user.firstName}</ListGroup.Item>
-                    <ListGroup.Item>{user.surname}</ListGroup.Item>
-                    <ListGroup.Item>{user.phoneNumber}</ListGroup.Item>
+              <ListGroup.Item key={user.id} >
+                <Card style={{ border: '0' }}>
+                  <ListGroup variant="" className = "list-group-horizontal">
+                    <ListGroup.Item className="" style={{ border: '0' }}>{user.firstName}</ListGroup.Item>
+                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'200px' }}>{user.surname}</ListGroup.Item>
+                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'200px' }}>{user.phoneNumber}</ListGroup.Item>
+                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'200px' }}>{user.email}</ListGroup.Item>
+                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'100px' }}>{user.tin}</ListGroup.Item>
+                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'100px' }}><span className="badge bg-primary rounded-pill">update</span><span className="badge bg-primary rounded-pill">delete</span></ListGroup.Item>
                   </ListGroup>
                 </Card>
               </ListGroup.Item>
             );
           })}
         </ListGroup>
-      </Container>
+      {/* </Container> */}
     </div>
   );
 };
