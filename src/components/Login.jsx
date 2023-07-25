@@ -54,6 +54,7 @@ const Login = () => {
         }else{
           localStorage.setItem("tin",(response.data.data.tin))
           localStorage.setItem("id",(response.data.data.id))
+          localStorage.setItem("isAdmin",(response.data.data.isAdmin))
           navigate("/home",{ state: response.data.data})
         }
           
@@ -169,9 +170,10 @@ const Login = () => {
               <div className="button">
                 <Button
                   className="btn btn-primary"
-                  type="button"
+                  type="submit"
                   size="lg"
                   onClick={handleSubmit}
+                  
                 >
                   Sign In
                 </Button>
@@ -183,7 +185,7 @@ const Login = () => {
                 }}
               >
                 
-                <h6 className="hr-lines" >OR</h6>
+                <h6 className="hr-lines">OR</h6>
                 
               </div>
               <div className="button">

@@ -43,6 +43,7 @@ const AddUser = ({ showModal, toggleModal }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     createUserApi(user)
+    toggleModal()
       .then((response) => {
         console.log(response.data);
       })
