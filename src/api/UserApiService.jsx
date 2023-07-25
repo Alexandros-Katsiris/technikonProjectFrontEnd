@@ -13,4 +13,6 @@ export const updateUserApi = (user) => apiClient.put('/users', user)
 
 export const createUserApi = (user) => apiClient.post('/users', user);
 
+export const countUsersApi = () => apiClient.get('/users/count');
+
 export const loginUserApi = (props) => apiClient.get(`/login?username=${props.username}&password=${props.password}`)
