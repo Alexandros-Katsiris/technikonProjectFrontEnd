@@ -54,7 +54,7 @@ const Login = () => {
         }else{
           localStorage.setItem("tin",(response.data.data.tin))
           localStorage.setItem("id",(response.data.data.id))
-          localStorage.setItem("isAdmin",(response.data.data.isAdmin))
+          localStorage.setItem("role",(response.data.data.role))
           navigate("/home",{ state: response.data.data})
         }
           

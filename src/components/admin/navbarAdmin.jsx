@@ -1,19 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import technikon from "./img/Frame.png";
-import logo from "./img/Vector.png";
-import "./navbar1.css";
-import createbutton from "./img/createbutton.png";
-import search from "./img/search.png";
-import img from "./img/Img.png";
-import Notification from "./img/Notifications_unread.png"
-import menuDot from "./img/menu-dots-vert.png";
-import AddUser from "./AddUser";
-import { AuthContext } from "../AuthContext";
-import { h1Icon } from "@progress/kendo-svg-icons";
+import technikon from "../img/Frame.png";
+import logo from "../img/Vector.png";
+import "../navbar1.css";
+import createbutton from "../img/createbutton.png";
+import search from "../img/search.png";
+import img from "../img/Img.png";
+import Notification from "../img/Notifications_unread.png"
+import menuDot from "../img/menu-dots-vert.png";
 
 
-function Navbar1() {
+
+function NavbarAdmin() {
 
     const [searchInput, setSearchInput] = useState("");
 
@@ -58,6 +56,14 @@ function Navbar1() {
                             value={searchInput}
                         />
                     </form>
+                    <div >
+                        <div className="dropdown">
+                            <button className="dropbtn"><img src={createbutton}></img>create user</button>
+                            <div className="dropdown-content">
+                                <a href="Home">Admin</a>
+                                <a href="#">customer</a>
+                            </div>
+                        </div>
                     </div>
                     <div>
                         <div>
@@ -95,10 +101,10 @@ function Navbar1() {
                     </div>
                 </div>
             </div>
-        
+        </div>
 
 
     );
 }
 
-export default Navbar1;
+export default NavbarAdmin;

@@ -1,39 +1,48 @@
 import { Outlet } from "react-router-dom";
 import "./Layout.css";
-import Navbar from "./NavBar";
 import TabMenu from "./TabMenu";
-import { AuthContext } from "../AuthContext";
+import TabMenuAdmin from "./admin/TabMenuAdmin";
 import Navbar1 from "./navbar1";
-import ListOfUsers from "./ListOfUsers";
-
-import { useLocation } from "react-router-dom";
+import NavBarAdmin from "./admin/navbarAdmin"
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import Properties from "./Properties";
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
 
 const Layout = (props) => {
-
   const navigate = useNavigate();
+  const role = localStorage.getItem("role");
+  console.log(role);
 
   useEffect(() => {
     if (localStorage.getItem("tin") === null) {
       navigate("/");
     }
-  }, [])
+  }, []);
 
   console.log(localStorage.getItem("tin"));
-  if(localStorage.getItem("tin") != null)
-  return (
-    <div className="Layout">
-      <Navbar1 />
-      <TabMenu />
-      <main>
-        {/* <ListOfUsers /> */}
-        <Outlet />
-      </main>
-    </div>
-  );
+  if (localStorage.getItem("tin") != null) {
+    if (role === "user") {
+      return (
+        <div className="Layout">
+          <Navbar1 />
+          <TabMenu />
+          <main>
+            {/* <ListOfUsers /> */}
+            <Outlet />
+          </main>
+        </div>
+      );
+    }else{
+      return (
+        <div className="Layout">
+          <NavBarAdmin />
+          <TabMenuAdmin />
+          <main>
+            <Outlet />
+          </main>
+        </div>
+      );
+    }
+  }
 };
 
 export default Layout;

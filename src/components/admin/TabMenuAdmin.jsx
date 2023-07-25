@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import AddContact from "./AddUser";
-import Properties from "./Properties";
-import { AuthContext } from "../AuthContext";
 
-function TabMenu(){
+
+function TabMenuAdmin(){
 
 const navigate = useNavigate();
 
@@ -37,21 +35,20 @@ return (
             <li className="nav-item">
               <a
                 class="nav-link"
-                href="javascript(0)"
+                href="/home/listofusers"
                 style={{ color: "black", fontSize: 18 }}
               >
-                About Us
+                List of users
               </a>
             </li>
             <li className="nav-item">
               <a
-                className="nav-link"
+                class="nav-link"
                 href="javascript(0)"
                 style={{ color: "black", fontSize: 18 }}
               >
-                Contact Us
+                Reports
               </a>
-              
             </li>
             </ul>
         </div>
@@ -66,4 +63,4 @@ return (
   );
 }
 
-export default TabMenu;
+export default TabMenuAdmin;
