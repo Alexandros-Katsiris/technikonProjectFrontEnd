@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
-import { retrievePropertyApi } from "../api/PropertyApiService";
+import { retrievePropertyApi, deletePropertyApi } from "../api/PropertyApiService";
 import AddUser from "./AddUser";
 import { useState } from "react";
 import { Card, ListGroupItem } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import house from "./img/house.png";
+import Button from 'react-bootstrap/Button';
 
 export const PropertyCard = () => {
   const [e9, setE9] = useState(0);
@@ -18,6 +19,12 @@ export const PropertyCard = () => {
       console.log(properties);
     });
   };
+
+  const deleteProperty = (propertyId) => {
+    //console.log(propertyId);
+    deletePropertyApi(propertyId);
+    setProperties(properties.filter(property => property.id != propertyId));
+  }
 
   useEffect(() => {
     getProperty();
@@ -43,8 +50,8 @@ export const PropertyCard = () => {
                 <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
               </ListGroup>
               <Card.Body>
-                <Card.Link href="#">Card Link</Card.Link>
-                <Card.Link href="#">Another Link</Card.Link>
+                <Button style={{display:"flex", width:"100px", height:"50px"}} variant="success">Edit</Button>
+                <Button onClick={(propertyId) => deleteProperty(property.id)} style={{display:"flex", width:"100px", height:"50px"}} variant="danger">Delete</Button>
               </Card.Body>
             </Card>
           </ListGroup.Item>
