@@ -12,7 +12,7 @@ const App = () => {
   return(
     <div className="App">
         <Routes>
-          <Route index path="login" element={<Login />} />
+          <Route index element={<Login />} />
           <Route path="/" element={<Layout/>}>
             <Route path="home" element={<Home/>}></Route>
             <Route path="properties" element={<PropertyCard/>} />

@@ -86,7 +86,7 @@ function Navbar1() {
                             </button>
                             <div className="dropdown-content" style={{direction: "ltr",}}>
                                 <a href="#">Settings</a>
-                                <a onClick={logOut} href="/login">Log out</a>
+                                <a onClick={logOut} href="/">Log out</a>
                             </div>
                         </div>
                     </div>
