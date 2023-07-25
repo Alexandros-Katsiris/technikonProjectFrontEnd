@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
 import "./navbar1.css";
-import createbutton from "./img/createbutton.png";
 import search from "./img/search.png";
 import img from "./img/Img.png";
 import Notification from "./img/Notifications_unread.png"
 import menuDot from "./img/menu-dots-vert.png";
-import AddUser from "./AddUser";
-import { AuthContext } from "../AuthContext";
-import { h1Icon } from "@progress/kendo-svg-icons";
+
 
 
 function Navbar1() {

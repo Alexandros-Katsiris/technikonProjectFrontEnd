@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./components/Login";
 import AboutUs from "./components/AboutUs";
-import { useLocation } from "react-router-dom";
 import ListOfUsers from "./components/ListOfUsers";
 import PropertyCard from "./components/PropertyCard";
 import Reports from "./components/admin/Reports";
