@@ -1,6 +1,6 @@
 import AddProperty from "./AddProperty";
 import { useState } from "react";
-import { PropertyCard } from "./PropertyCard";
+
 
 const Properties = () =>{
     
@@ -21,7 +21,7 @@ const Properties = () =>{
             />
 
 <div style={{margin:"20px"}}>
-        <PropertyCard/>
+        
         </div>
         </div>
     );

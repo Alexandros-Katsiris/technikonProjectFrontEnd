@@ -51,13 +51,13 @@ const AddProperty = ({ showModal, toggleModal }) => {
     createPropertyApi(property)
       .then((response) => {
         console.log(response.data);
+        toggleModal();
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  //  const {street, city,number,pc} = address;
 
   return (
     <div>

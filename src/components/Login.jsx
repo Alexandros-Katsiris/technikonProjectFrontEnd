@@ -18,6 +18,7 @@ import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
 import { useNavigate } from "react-router-dom";
 import AddUser from "./AddUser";
+import { Alert } from "react-bootstrap";
 
 const Login = () => {
   const toggleModal = () => {
@@ -48,14 +49,20 @@ const Login = () => {
     event.preventDefault();
     loginUserApi(credentials)
       .then((response) => {
-        localStorage.setItem("tin",(response.data.data.tin))
-        localStorage.setItem("id",(response.data.data.id))
+        if(response.data.data===null){
+          alert("Incorrect credentials")
+        }else{
+          localStorage.setItem("tin",(response.data.data.tin))
+          localStorage.setItem("id",(response.data.data.id))
           navigate("/home",{ state: response.data.data})
+        }
+          
       })
       .catch((error) => {
         console.log(error);
       });
   };
+
 
   return (
     <div className="image">

@@ -1,17 +1,26 @@
 import React, { useEffect } from "react";
-import { retrievePropertyApi, deletePropertyApi } from "../api/PropertyApiService";
+import {
+  retrievePropertyApi,
+  deletePropertyApi,
+} from "../api/PropertyApiService";
 import AddUser from "./AddUser";
 import { useState } from "react";
 import { Card, ListGroupItem } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import house from "./img/house.png";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
+import AddProperty from "./AddProperty";
 
-export const PropertyCard = () => {
-  const [e9, setE9] = useState(0);
-  const [type, setType] = useState("");
+const PropertyCard = () => {
+
   const tin = localStorage.getItem("tin");
   const [properties, setProperties] = useState([]);
+
+  const [showModal,setShowModal] = useState(false);
+    
+    const toggleModal = () => {
+        setShowModal((show) => !show);
+    };
 
   const getProperty = () => {
     retrievePropertyApi(tin).then((response) => {
@@ -20,18 +29,28 @@ export const PropertyCard = () => {
     });
   };
 
-  const deleteProperty = (propertyId) => {
-    //console.log(propertyId);
-    deletePropertyApi(propertyId);
-    setProperties(properties.filter(property => property.id != propertyId));
+  const addProperty = () => {
+      toggleModal();
+      getProperty();
   }
+
+  const deleteProperty = (propertyId) => {
+    deletePropertyApi(propertyId);
+    setProperties(properties.filter((property) => property.id != propertyId));
+  };
 
   useEffect(() => {
     getProperty();
-  }, []);
+  }, [showModal]);
 
   return (
-    <ListGroup>
+    <div>
+      <Button className="btn btn-primary" type="button" onClick={addProperty}>Add Property</Button>
+      <AddProperty
+            showModal={showModal}
+            toggleModal={toggleModal}
+            />
+    <ListGroup horizontal>
       {properties.map((property) => {
         return (
           <ListGroup.Item key={property.e9Number}>
@@ -49,14 +68,29 @@ export const PropertyCard = () => {
                 <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
                 <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
               </ListGroup>
-              <Card.Body>
-                <Button style={{display:"flex", width:"100px", height:"50px"}} variant="success">Edit</Button>
-                <Button onClick={(propertyId) => deleteProperty(property.id)} style={{display:"flex", width:"100px", height:"50px"}} variant="danger">Delete</Button>
+              <Card.Body style={{ display: "" }}>
+                <div style={{display:"inline-block"}}>
+                  <Button
+                    style={{width: "100px", height: "50px" }}
+                    variant="success"
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={() => deleteProperty(property.id)}
+                    style={{  width: "100px", height: "50px" }}
+                    variant="danger"
+                  >
+                    Delete
+                  </Button>
+                </div>
               </Card.Body>
             </Card>
           </ListGroup.Item>
         );
       })}
     </ListGroup>
+    </div>
   );
 };
+export default PropertyCard;
