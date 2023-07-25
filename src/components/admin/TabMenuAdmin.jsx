@@ -44,7 +44,7 @@ return (
             <li className="nav-item">
               <a
                 class="nav-link"
-                href="javascript(0)"
+                href="/home/reports"
                 style={{ color: "black", fontSize: 18 }}
               >
                 Reports
