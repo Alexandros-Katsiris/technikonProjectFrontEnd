@@ -30,11 +30,11 @@ function NavbarAdmin() {
     }
 
     const toggleModalAdmin = () =>{
-        setShowModalAdmin((show) => !show);
+        setShowModalAdmin((show1) => !show1);
     }
 
     const toggleModalUser = () =>{
-        setShowModalUser((show) => !show);
+        setShowModalUser((show2) => !show2);
     }
 
 
@@ -71,8 +71,8 @@ function NavbarAdmin() {
                         <div className="dropdown">
                             <button className="dropbtn"><img src={createbutton}></img>create user</button>
                             <div className="dropdown-content">
-                                <a href="Home" onClick={toggleModalAdmin}>Admin</a>
-                                <a href="#">customer</a>
+                                <a onClick={toggleModalAdmin}>Admin</a>
+                                <a onClick={toggleModalUser}>customer</a>
                             </div>
                         </div>
                     </div>
