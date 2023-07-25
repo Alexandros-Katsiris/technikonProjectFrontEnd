@@ -8,12 +8,16 @@ import search from "../img/search.png";
 import img from "../img/Img.png";
 import Notification from "../img/Notifications_unread.png"
 import menuDot from "../img/menu-dots-vert.png";
+import AddUser from "../AddUser";
+import AddAdmin from "./AddAdmin";
 
 
 
 function NavbarAdmin() {
 
     const [searchInput, setSearchInput] = useState("");
+    const [showModalAdmin, setShowModalAdmin] = useState(false)
+    const [showModalUser, setShowModalUser] = useState(false)
 
     const handleChange = (e) => {
         e.preventDefault();
@@ -25,6 +29,13 @@ function NavbarAdmin() {
         localStorage.removeItem("tin")
     }
 
+    const toggleModalAdmin = () =>{
+        setShowModalAdmin((show) => !show);
+    }
+
+    const toggleModalUser = () =>{
+        setShowModalUser((show) => !show);
+    }
 
 
     return (
@@ -60,7 +71,7 @@ function NavbarAdmin() {
                         <div className="dropdown">
                             <button className="dropbtn"><img src={createbutton}></img>create user</button>
                             <div className="dropdown-content">
-                                <a href="Home">Admin</a>
+                                <a href="Home" onClick={toggleModalAdmin}>Admin</a>
                                 <a href="#">customer</a>
                             </div>
                         </div>
@@ -101,6 +112,8 @@ function NavbarAdmin() {
                     </div>
                 </div>
             </div>
+            <AddUser showModal={showModalUser} toggleModal={toggleModalUser} />
+            <AddAdmin showModal={showModalAdmin} toggleModal={toggleModalAdmin}/>
         </div>
 
 

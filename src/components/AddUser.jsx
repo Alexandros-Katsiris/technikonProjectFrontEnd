@@ -42,8 +42,8 @@ const AddUser = ({ showModal, toggleModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    createUserApi(user)
     toggleModal()
+    createUserApi(user)
       .then((response) => {
         console.log(response.data);
       })
@@ -52,7 +52,7 @@ const AddUser = ({ showModal, toggleModal }) => {
       });
   };
 
-  //  const {street, city,number,pc} = address;
+
 
   return (
     <Modal
