@@ -85,9 +85,9 @@ const PropertyCard = () => {
                 </ListGroup>
                 <Card.Body>
                   <ButtonGroup aria-label="Basic example" size='sm'>
-                    <Button variant="secondary"  className="cardButton" onClick={()=>addRepair(property.id)}>Repair</Button>
-                    <Button variant="secondary" className="cardButton">Edit</Button>
-                    <Button variant="secondary" className="cardButton" onClick={() => deleteProperty(property.id)}>Delete</Button>
+                    <Button variant="success"  className="cardButton" onClick={()=>addRepair(property.id)}>Repair</Button>
+                    <Button variant="warning" className="cardButton">Edit</Button>
+                    <Button variant="danger" className="cardButton" onClick={() => deleteProperty(property.id)}>Delete</Button>
                     
                   </ButtonGroup>
                 </Card.Body>
