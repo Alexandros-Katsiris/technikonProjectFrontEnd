@@ -2,16 +2,16 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
+function TabMenu() {
+  const navigate = useNavigate();
 
-function TabMenu(){
-
-const navigate = useNavigate();
-
-return (
-    <nav className="navbar navbar-expand-sm navbar-light" style={{background: '#FFF', height: "56px"}} >
-      <div className="container-fluid" >
-   
-        <div className="collapse navbar-collapse" id="mynavbar" >
+  return (
+    <nav
+      className="navbar navbar-expand-sm navbar-light"
+      style={{ background: "#FFF", height: "56px" }}
+    >
+      <div className="container-fluid">
+        <div className="collapse navbar-collapse" id="mynavbar">
           <ul className="navbar-nav me-auto">
             <li className="nav-item">
               <a
@@ -25,8 +25,7 @@ return (
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="/home/properties"
-                
+                href="properties"
                 style={{ color: "black", fontSize: 18 }}
               >
                 Properties
@@ -49,18 +48,11 @@ return (
               >
                 Contact Us
               </a>
-              
             </li>
-            </ul>
+          </ul>
         </div>
       </div>
-      {/* <AddContact
-          showModal={showModal}
-          toggleModal={toggleModal}
-          addContact={addContact}
-        /> */}
     </nav>
-    
   );
 }
 

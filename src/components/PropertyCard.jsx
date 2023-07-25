@@ -3,24 +3,38 @@ import {
   retrievePropertyApi,
   deletePropertyApi,
 } from "../api/PropertyApiService";
-import AddUser from "./AddUser";
+import "./PropertyCard.css"
 import { useState } from "react";
-import { Card, ListGroupItem } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 import house from "./img/house.png";
-import Button from "react-bootstrap/Button";
 import AddProperty from "./AddProperty";
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
+import AddRepair from "./AddRepair";
+
 
 const PropertyCard = () => {
-
   const tin = localStorage.getItem("tin");
   const [properties, setProperties] = useState([]);
+  const [propertyId, setPropertyId] = useState(0);
 
-  const [showModal,setShowModal] = useState(false);
-    
-    const toggleModal = () => {
-        setShowModal((show) => !show);
-    };
+  const [showModalProperty, setShowModalProperty] = useState(false);
+  const [showModalRepair, setShowModalRepair] = useState(false);
+
+  const toggleModalProperty = () => {
+    setShowModalProperty((show1) => !show1);
+  };
+
+  const toggleModalRepair = () => {
+    setShowModalRepair((show2) => !show2);
+  };
+
+  const addRepair = (id) =>{
+    console.log("hi")
+    toggleModalRepair();
+    setPropertyId(id)
+  }
 
   const getProperty = () => {
     retrievePropertyApi(tin).then((response) => {
@@ -30,66 +44,58 @@ const PropertyCard = () => {
   };
 
   const addProperty = () => {
-      toggleModal();
-      getProperty();
-  }
+    toggleModalProperty();
+    getProperty();
+  };
 
   const deleteProperty = (propertyId) => {
     deletePropertyApi(propertyId);
-    setProperties(properties.filter((property) => property.id != propertyId));
+    setProperties(properties.filter((property) => property.id !== propertyId));
   };
 
   useEffect(() => {
     getProperty();
-  }, [showModal]);
+  }, [showModalProperty]);
 
   return (
     <div>
-      <Button className="btn btn-primary" type="button" onClick={addProperty}>Add Property</Button>
-      <AddProperty
-            showModal={showModal}
-            toggleModal={toggleModal}
-            />
-    <ListGroup horizontal>
-      {properties.map((property) => {
-        return (
-          <ListGroup.Item key={property.e9Number}>
-            <Card style={{ width: "18rem" }}>
-              <Card.Img variant="top" src={house} />
-              <Card.Body>
-                <Card.Title>Type: {property.propertyType}</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-              </Card.Body>
-              <ListGroup className="list-group-flush">
-                <ListGroup.Item>Cras justo odio</ListGroup.Item>
-                <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-                <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
-              </ListGroup>
-              <Card.Body style={{ display: "" }}>
-                <div style={{display:"inline-block"}}>
-                  <Button
-                    style={{width: "100px", height: "50px" }}
-                    variant="success"
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    onClick={() => deleteProperty(property.id)}
-                    style={{  width: "100px", height: "50px" }}
-                    variant="danger"
-                  >
-                    Delete
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </ListGroup.Item>
-        );
-      })}
-    </ListGroup>
+      <Button className="btn btn-primary" type="button" onClick={addProperty}>
+        Add Property
+      </Button>
+      <AddProperty showModal={showModalProperty} toggleModal={toggleModalProperty} />
+      <AddRepair showModal={showModalRepair} toggleModal={toggleModalRepair} propertyId={propertyId}/>
+      <ListGroup horizontal style={{marginLeft:"5%"}}>
+        {properties.map((property) => {
+          return (
+            <ListGroup.Item style={{margin:"8px"}} key={property.e9Number}>
+              <Card style={{ width: "18rem" }}>
+                <Card.Img variant="top" src={house} />
+                <Card.Body>
+                  <Card.Title style={{textAlign:"center"}}>{property.propertyType}</Card.Title>
+                </Card.Body>
+                <ListGroup className="list-group-flush">
+                  <ListGroup.Item>
+                    Const. Date: {property.yearOfConstruction}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    Address: {property.address.street} {property.address.number}
+                    , {property.address.pc}, {property.address.city}
+                  </ListGroup.Item>
+                  <ListGroup.Item>E9: {property.e9Number}</ListGroup.Item>
+                </ListGroup>
+                <Card.Body>
+                  <ButtonGroup aria-label="Basic example" size='sm'>
+                    <Button variant="secondary"  className="cardButton" onClick={()=>addRepair(property.id)}>Repair</Button>
+                    <Button variant="secondary" className="cardButton">Edit</Button>
+                    <Button variant="secondary" className="cardButton" onClick={() => deleteProperty(property.id)}>Delete</Button>
+                    
+                  </ButtonGroup>
+                </Card.Body>
+              </Card>
+            </ListGroup.Item>
+          );
+        })}
+      </ListGroup>
     </div>
   );
 };
