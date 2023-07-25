@@ -3,8 +3,6 @@ import { useState } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
 import { createUserApi } from "../api/UserApiService";
 import "./AddUser.css";
-import PhoneInput from 'react-phone-input-2';
-import 'react-phone-input-2/lib/style.css';
 
 const AddUser = ({ showModal, toggleModal }) => {
   const [user, setUser] = useState({
@@ -150,13 +148,9 @@ const AddUser = ({ showModal, toggleModal }) => {
                       paddingLeft: "4px",
                       paddingRight: "4px",
                     }}
-                  ><PhoneInput containerStyle={{color:"black"}}
-                  buttonStyle={{color:"#000000"}}
-                  searchStyle={{color:"black"}}
                   >
                     
                     Phone Number
-                    </PhoneInput>
                   </Form.Label>
                   <Form.Control
                     type="number"
