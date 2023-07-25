@@ -1,26 +1,18 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
-import {
-  Modal,
-  Form,
-  Button,
-  Row,
-  Col,
-  ModalTitle,
-  ModalHeader,
-  ModalBody,
-} from "react-bootstrap";
+import { Form, Button,} from "react-bootstrap";
 import { loginUserApi } from "../api/UserApiService";
-import { AuthContext } from "../AuthContext";
+
 import "./Login.css";
-import { Link } from "react-router-dom";
+
 import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
 import { useNavigate } from "react-router-dom";
 import AddUser from "./AddUser";
-import { Alert } from "react-bootstrap";
+
 
 const Login = () => {
+
   const toggleModal = () => {
     setShowModal((show) => !show);
   };
@@ -40,7 +32,6 @@ const Login = () => {
   const onInputChange = (event) => {
     const { name: name, value } = event.target;
     setCredentials((prevState) => ({ ...prevState, [name]: value }));
-    //console.log(event.target);
   };
 
   
@@ -81,13 +72,6 @@ const Login = () => {
             />
             <img src={technikon} alt="frame" style={{ marginTop: "32px" }} />
           </div>
-          {/* <button
-              onClick={
-                toggleModal
-              }
-            >
-              Login
-            </button> */}
           <div className="definetelyNotModal">
             <div className="title">
               <h2>Login</h2>

@@ -3,14 +3,11 @@ import { Link } from "react-router-dom";
 import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
 import "./navbar1.css";
-import createbutton from "./img/createbutton.png";
 import search from "./img/search.png";
 import img from "./img/Img.png";
 import Notification from "./img/Notifications_unread.png"
 import menuDot from "./img/menu-dots-vert.png";
-import AddUser from "./AddUser";
-import { AuthContext } from "../AuthContext";
-import { h1Icon } from "@progress/kendo-svg-icons";
+
 
 
 function Navbar1() {
@@ -31,14 +28,14 @@ function Navbar1() {
 
     return (
         <div className="navbar navbar-expand-sm navbar-dark" style={{ background: "rgba(15, 70, 206, 1)", height: "72px", flexShrink: "0" }}>
-            <Link to="/">
+            <Link to="/home">
                 <img
                     src={logo}
                     alt="logo"
                     style={{ marginLeft: "10px", marginRight: "10px" }}
                 />
             </Link>
-            <Link to="/">
+            <Link to="/home">
                 <img src={technikon} alt="frame" />
             </Link>
             <div className="collapse navbar-collapse">

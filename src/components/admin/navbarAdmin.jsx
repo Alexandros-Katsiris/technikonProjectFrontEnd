@@ -30,24 +30,24 @@ function NavbarAdmin() {
     }
 
     const toggleModalAdmin = () =>{
-        setShowModalAdmin((show) => !show);
+        setShowModalAdmin((show1) => !show1);
     }
 
     const toggleModalUser = () =>{
-        setShowModalUser((show) => !show);
+        setShowModalUser((show2) => !show2);
     }
 
 
     return (
         <div className="navbar navbar-expand-sm navbar-dark" style={{ background: "rgba(15, 70, 206, 1)", height: "72px", flexShrink: "0" }}>
-            <Link to="/">
+            <Link to="/home">
                 <img
                     src={logo}
                     alt="logo"
                     style={{ marginLeft: "10px", marginRight: "10px" }}
                 />
             </Link>
-            <Link to="/">
+            <Link to="/home">
                 <img src={technikon} alt="frame" />
             </Link>
             <div className="collapse navbar-collapse">
@@ -71,8 +71,8 @@ function NavbarAdmin() {
                         <div className="dropdown">
                             <button className="dropbtn"><img src={createbutton}></img>create user</button>
                             <div className="dropdown-content">
-                                <a href="Home" onClick={toggleModalAdmin}>Admin</a>
-                                <a href="#">customer</a>
+                                <a onClick={toggleModalAdmin}>Admin</a>
+                                <a onClick={toggleModalUser}>customer</a>
                             </div>
                         </div>
                     </div>

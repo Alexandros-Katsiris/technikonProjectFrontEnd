@@ -1,9 +1,7 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+
 import { useNavigate } from "react-router-dom";
-import AddContact from "./AddUser";
-import Properties from "./Properties";
-import { AuthContext } from "../AuthContext";
+
 
 function TabMenu(){
 

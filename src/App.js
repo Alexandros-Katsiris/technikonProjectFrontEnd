@@ -2,10 +2,10 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout";
 import Login from "./components/Login";
 import AboutUs from "./components/AboutUs";
-import { useLocation } from "react-router-dom";
 import ListOfUsers from "./components/ListOfUsers";
 import PropertyCard from "./components/PropertyCard";
 import Reports from "./components/admin/Reports";
+import Home from "./components/Home";
 
 
 const App = () => {
@@ -13,11 +13,12 @@ const App = () => {
     <div className="App">
         <Routes>
           <Route index element={<Login />} />
-          <Route path="/home" element={<Layout/>}>
+          <Route path="/" element={<Layout/>}>
+            <Route path="home" element={<Home/>}></Route>
             <Route path="properties" element={<PropertyCard/>} />
             <Route path="aboutUs" element={<AboutUs/>}/>
             <Route path="listofusers" element={<ListOfUsers/>}/>
-            
+            <Route path="reports" element={<Reports/>}/>
           </Route>
         </Routes>
     </div>
