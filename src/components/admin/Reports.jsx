@@ -17,7 +17,6 @@ function Reports() {
   const [tin, setTin] = useState(localStorage.getItem("tin"));
   const [userId, setUserId] = useState();
 
-
   useEffect(() => {
     getNumUsers();
     getUsers();
@@ -31,19 +30,17 @@ function Reports() {
     });
   };
 
-  const getNumProperties = () =>{
-    countPropertiesApi()
-        .then((response) => {
-            setNumProperties(response.data.data);
-        });
-  }
+  const getNumProperties = () => {
+    countPropertiesApi().then((response) => {
+      setNumProperties(response.data.data);
+    });
+  };
 
   const getUsers = async () => {
     retrieveAllUsersApi().then((response) => {
       setUsers(response.data.data);
     });
   };
-
 
   const getNumPropertyRepairsReports = async (id) => {
     setRepairPropertiesReports([]);
@@ -71,6 +68,22 @@ function Reports() {
           })}
         </Dropdown.Menu>
       </Dropdown>
+      <ListGroup.Item>
+        <Card>
+          <Card.Body>
+            <Card.Title>
+              Total Registered Users: {numUsers}
+            </Card.Title>
+          </Card.Body>
+        </Card>
+        <Card>
+          <Card.Body>
+            <Card.Title>
+              Total Registered Properties: {numProperties}
+            </Card.Title>
+          </Card.Body>
+        </Card>
+      </ListGroup.Item>
       <ListGroup horizontal>
         {repairPropertiesReports?.map((propertyRepairReports) => {
           return (
