@@ -5,7 +5,6 @@ import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
 import { createRepairApi } from "../api/RepairApiService";
 import { Row, Col } from "react-bootstrap";
-import { Range } from "react-range";
 
 const AddRepair = ({ showModal, toggleModal, propertyId }) => {
   const [repair, setRepair] = useState({
