@@ -6,6 +6,7 @@ import ListOfUsers from "./components/ListOfUsers";
 import PropertyCard from "./components/PropertyCard";
 import Reports from "./components/admin/Reports";
 import Home from "./components/Home";
+import ContactUs from "./components/ContactUs";
 
 
 const App = () => {
@@ -19,6 +20,8 @@ const App = () => {
             <Route path="aboutUs" element={<AboutUs/>}/>
             <Route path="listofusers" element={<ListOfUsers/>}/>
             <Route path="reports" element={<Reports/>}/>
+            <Route path="aboutUs" element={<AboutUs/>}/>
+            <Route path="contactUs" element={<ContactUs/>}/>
           </Route>
         </Routes>
     </div>

@@ -2,19 +2,24 @@ import Card from 'react-bootstrap/Card';
 import { useEffect, useState } from 'react';
 import { countUsersApi } from '../../api/UserApiService';
 import { propertyRepairsReports } from '../../api/PropertyApiService';
-import { identifier } from '@babel/types';
 import ListGroup from "react-bootstrap/ListGroup";
 import { retrievePropertyApi } from '../../api/PropertyApiService';
+import { retrieveAllUsersApi } from '../../api/UserApiService'
+import { Dropdown } from 'react-bootstrap';
 
 function Reports() {
 
     const [numUsers, setNumUsers] = useState();
+    const [numProperties, setNumProperties] = useState();
     const [repairPropertiesReports, setRepairPropertiesReports] = useState([])
     const [properties, setProperties] = useState([]);
+    const [users, setUsers] = useState([]);
+    const [tin, setTin] = useState();
+    const [userId, setUserId] = useState();
 
     useEffect(() => {
         getNumUsers();
-        getNumPropertyRepairsReports();
+        getUsers();
     }, []);
 
     const getNumUsers = () => {
@@ -26,21 +31,41 @@ function Reports() {
     };
 
     const getProperty = () => {
-        retrievePropertyApi(localStorage.getItem("tin"))
+        retrievePropertyApi(tin)
             .then((response) => {
                 setProperties(response.data.data);
-                console.log(properties);
+                //console.log(properties)
+            });
+    };
+
+    const getNumUsers = () => {
+        countUsersApi()
+            .then((response) => {
+                setNumUsers(response.data.data);
             });
     };
 
     const getNumPropertyRepairsReports = () => {
-        const pid = 1;
-        propertyRepairsReports(localStorage.getItem("id"), pid)
-            .then((response) => {
-                setRepairPropertiesReports(response.data.data);
-                console.log(repairPropertiesReports);
-            });
+        getProperty()
+            //const property = properties[0]; 
+            properties.map((property => {
+            if(property != null)
+            propertyRepairsReports(userId, property.id)
+                .then((response) => {
+                    const newResponse = response.data.data;
+                    setRepairPropertiesReports((repairPropertiesReports) => ({ ...repairPropertiesReports, newResponse }));
+                    //console.log(response.data.data);
+                    console.log(repairPropertiesReports);
+                })
+            }));
     };
+
+    const onDropDownChange = (tin, id) => {
+        console.log(tin)
+        setUserId(id);
+        setTin(tin);
+        getNumPropertyRepairsReports();
+    }
 
     return (
         <div>
