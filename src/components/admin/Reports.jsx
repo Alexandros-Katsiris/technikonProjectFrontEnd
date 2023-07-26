@@ -6,6 +6,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 import { retrievePropertyApi } from "../../api/PropertyApiService";
 import { retrieveAllUsersApi } from "../../api/UserApiService";
 import { Dropdown } from "react-bootstrap";
+import { countPropertiesApi } from "../../api/PropertyApiService";
 
 function Reports() {
   const [numUsers, setNumUsers] = useState();
@@ -16,57 +17,40 @@ function Reports() {
   const [tin, setTin] = useState(localStorage.getItem("tin"));
   const [userId, setUserId] = useState();
 
+
   useEffect(() => {
     getNumUsers();
     getUsers();
-  },[]);
+    getNumProperties();
+  }, []);
 
-  const getNumUsers = async() => {
+  const getNumUsers = async () => {
     countUsersApi().then((response) => {
       setNumUsers(response.data.data);
       console.log(numUsers);
     });
   };
 
-  const getUsers = async() => {
+  const getNumProperties = () =>{
+    countPropertiesApi()
+        .then((response) => {
+            setNumProperties(response.data.data);
+        });
+  }
+
+  const getUsers = async () => {
     retrieveAllUsersApi().then((response) => {
       setUsers(response.data.data);
     });
   };
 
-  const getProperty =async (tin) => {
-     retrievePropertyApi(tin).then((response) => {
-      setProperties(response.data.data);
-      //console.log(properties)
-    });
-  };
 
-  const getNumPropertyRepairsReports = async(tin,id) => {
-    
-    await getProperty(tin);
-    
-    //const property = properties[0];
-    // console.log(properties);
-    properties.forEach((property) => {
-      if (property != null) {
-        propertyRepairsReports(id, property.id).then((response) => {
-          setRepairPropertiesReports(response.data.data);
-          console.log(response.data.data);
-        });
-      }
-      
-    //   console.log(property);
+  const getNumPropertyRepairsReports = async (id) => {
+    setRepairPropertiesReports([]);
+    propertyRepairsReports(id).then((response) => {
+      setRepairPropertiesReports(response.data.data);
+      console.log(response.data.data);
     });
-    // console.log(repairPropertiesReports);
-  };
-
-  const onDropDownChange = (userTin, id) => {
-    
-    setUserId(id);
-    setTin(userTin);
-    
-    getNumPropertyRepairsReports();
-    console.log(tin);
   };
 
   return (
@@ -75,11 +59,11 @@ function Reports() {
         <Dropdown.Toggle variant="success" id="dropdown-basic">
           Dropdown Button
         </Dropdown.Toggle>
-        <Dropdown.Menu >
+        <Dropdown.Menu>
           {users.map((user) => {
             return (
               <Dropdown.Item
-                onClick={() => getNumPropertyRepairsReports(user.tin, user.id)}
+                onClick={() => getNumPropertyRepairsReports(user.id)}
               >
                 {user.tin}
               </Dropdown.Item>
@@ -88,7 +72,7 @@ function Reports() {
         </Dropdown.Menu>
       </Dropdown>
       <ListGroup horizontal>
-        {repairPropertiesReports.map((propertyRepairReports) => {
+        {repairPropertiesReports?.map((propertyRepairReports) => {
           return (
             <ListGroup.Item key={propertyRepairReports.repairType}>
               <Card style={{ width: "18rem" }}>

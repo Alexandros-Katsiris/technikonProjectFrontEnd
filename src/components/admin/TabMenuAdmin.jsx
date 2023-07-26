@@ -22,11 +22,7 @@ return (
             <li className="nav-item">
               <a
                 className="nav-link"
-<<<<<<< HEAD
                 href="properties"
-=======
-                href="/properties"
->>>>>>> 09ce0513d01baa4fb6b2c77273c932f4a8d0a3ae
                 
                 style={{ color: "black", fontSize: 18 }}
               >
@@ -36,11 +32,7 @@ return (
             <li className="nav-item">
               <a
                 class="nav-link"
-<<<<<<< HEAD
                 href="listofusers"
-=======
-                href="/listofusers"
->>>>>>> 09ce0513d01baa4fb6b2c77273c932f4a8d0a3ae
                 style={{ color: "black", fontSize: 18 }}
               >
                 List of users
