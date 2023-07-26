@@ -34,7 +34,7 @@ function TabMenu() {
             <li className="nav-item">
               <a
                 class="nav-link"
-                href="javascript(0)"
+                href="/aboutUs"
                 style={{ color: "black", fontSize: 18 }}
               >
                 About Us
@@ -43,7 +43,7 @@ function TabMenu() {
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="javascript(0)"
+                href="contactUs"
                 style={{ color: "black", fontSize: 18 }}
               >
                 Contact Us

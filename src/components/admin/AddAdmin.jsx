@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Modal, Form, Button, Row, Col } from "react-bootstrap";
+import { Modal, Form, Button } from "react-bootstrap";
 import { createUserApi } from "../../api/UserApiService";
 import "../AddUser.css";
 

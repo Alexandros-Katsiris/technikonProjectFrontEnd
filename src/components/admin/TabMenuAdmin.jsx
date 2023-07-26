@@ -1,11 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
 
 function TabMenuAdmin(){
 
-const navigate = useNavigate();
 
 return (
     <nav className="navbar navbar-expand-sm navbar-light" style={{background: '#FFF', height: "56px"}} >
@@ -25,7 +22,7 @@ return (
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="/home/properties"
+                href="/properties"
                 
                 style={{ color: "black", fontSize: 18 }}
               >
@@ -35,7 +32,7 @@ return (
             <li className="nav-item">
               <a
                 class="nav-link"
-                href="/home/listofusers"
+                href="/listofusers"
                 style={{ color: "black", fontSize: 18 }}
               >
                 List of users
