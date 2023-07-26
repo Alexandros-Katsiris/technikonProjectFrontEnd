@@ -30,7 +30,7 @@ const PropertyCard = () => {
     setShowModalRepair((show2) => !show2);
   };
 
-  const addRepair = (id) =>{
+  const addRepair = (id) => {
     console.log("hi")
     toggleModalRepair();
     setPropertyId(id)
@@ -63,15 +63,15 @@ const PropertyCard = () => {
         Add Property
       </Button>
       <AddProperty showModal={showModalProperty} toggleModal={toggleModalProperty} />
-      <AddRepair showModal={showModalRepair} toggleModal={toggleModalRepair} propertyId={propertyId}/>
-      <ListGroup horizontal style={{marginLeft:"5%"}}>
+      <AddRepair showModal={showModalRepair} toggleModal={toggleModalRepair} propertyId={propertyId} />
+      <ListGroup horizontal style={{ marginLeft: "5%" }}>
         {properties.map((property) => {
           return (
-            <ListGroup.Item style={{margin:"8px"}} key={property.e9Number}>
+            <ListGroup.Item style={{ margin: "8px" }} key={property.e9Number}>
               <Card style={{ width: "18rem" }}>
                 <Card.Img variant="top" src={house} />
                 <Card.Body>
-                  <Card.Title style={{textAlign:"center"}}>{property.propertyType}</Card.Title>
+                  <Card.Title style={{ textAlign: "center" }}>{property.propertyType}</Card.Title>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
                   <ListGroup.Item>
@@ -85,10 +85,10 @@ const PropertyCard = () => {
                 </ListGroup>
                 <Card.Body>
                   <ButtonGroup aria-label="Basic example" size='sm'>
-                    <Button variant="success"  className="cardButton" onClick={()=>addRepair(property.id)}>Repair</Button>
+                    <Button variant="success" className="cardButton" onClick={() => addRepair(property.id)}>Repair</Button>
                     <Button variant="warning" className="cardButton">Edit</Button>
                     <Button variant="danger" className="cardButton" onClick={() => deleteProperty(property.id)}>Delete</Button>
-                    
+
                   </ButtonGroup>
                 </Card.Body>
               </Card>
