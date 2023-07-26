@@ -4,11 +4,12 @@ import sort from "./img/sort.png";
 import filter from "./img/filter.png";
 import plus from "./img/+.png";
 import downloadimg from "./img/download.png";
-import { Container } from "react-bootstrap";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Table } from "react-bootstrap";
 import { retrieveAllUsersApi } from "../api/UserApiService";
+import deleteimg from './img/delete.png';
+import editimg from './img/edit.png'
 
 const ListOfUsers = () => {
   const [users, setUsers] = useState([]);
@@ -65,26 +66,26 @@ const ListOfUsers = () => {
         <h6>Tax ID Number</h6>
         <h6>Actions</h6>
       </div>
-      {/* <Container style={{ marginTop: "50px", maxWidth: "1000px" }}> */}
-        <ListGroup style={{ columnCount: "6", marginTop: "40px", marginLeft: "45px", marginRight: "80px" }}>
+      
+        <Table style={{ marginLeft: "45px"}}>
           {users.map((user) => {
             return (
-              <ListGroup.Item key={user.id} >
-                <Card style={{ border: '0' }}>
-                  <ListGroup variant="" className = "list-group-horizontal">
-                    <ListGroup.Item className="" style={{ border: '0' }}>{user.firstName}</ListGroup.Item>
-                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'200px' }}>{user.surname}</ListGroup.Item>
-                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'200px' }}>{user.phoneNumber}</ListGroup.Item>
-                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'200px' }}>{user.email}</ListGroup.Item>
-                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'100px' }}>{user.tin}</ListGroup.Item>
-                    <ListGroup.Item className="" style={{ border: '0', marginLeft:'100px' }}><span className="badge bg-primary rounded-pill">update</span><span className="badge bg-primary rounded-pill">delete</span></ListGroup.Item>
-                  </ListGroup>
+              <Table key={user.id} >
+                <Card style={{ border: '0', width: "1720px",  }}>
+                  <Table className="usersTable">
+                    <td style={{ border: '0', width:'326px'}}>{user.firstName}</td>
+                    <td style={{ border: '0', width:'310px'}}>{user.surname}</td>
+                    <td style={{ border: '0', width:'286px' }}><div style={{marginLeft:'10px'}}>{user.phoneNumber}</div></td>
+                    <td style={{ border: '0', width:'286px'}}>{user.email}</td>
+                    <td style={{ border: '0', width:'288px'}}><div style={{marginLeft:'50px'}}>{user.tin}</div></td>
+                    <td style={{ border: '0', width:'286px' }}><button style={{marginLeft: '50px', marginRight:"10px", border: '0', background:'white'}}><img src={editimg} alt="edit" /></button><button style={{marginRight:"20px", background:'white', border: '0'}}><img src={deleteimg} alt="edit" style={{borderImage: '0'}}/></button></td>
+                  </Table>
                 </Card>
-              </ListGroup.Item>
+              </Table>
             );
           })}
-        </ListGroup>
-      {/* </Container> */}
+        </Table>
+      
     </div>
   );
 };
