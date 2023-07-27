@@ -6,8 +6,7 @@ import ListOfUsers from "./components/ListOfUsers";
 import PropertyCard from "./components/PropertyCard";
 import Reports from "./components/admin/Reports";
 import Home from "./components/Home";
-// import { ToastContainer } from "react-toastify";
-// import 'react-toastify/dist/ReactToastify.css';import ContactUs from "./components/ContactUs";
+import ContactUs from "./components/ContactUs"
 import Profile from "./components/Profile";
 
 
