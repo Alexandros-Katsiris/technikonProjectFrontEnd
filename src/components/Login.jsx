@@ -1,15 +1,13 @@
-import React from "react";
 import { useState } from "react";
-import { Form, Button,} from "react-bootstrap";
+import { Form, Button, } from "react-bootstrap";
 import { loginUserApi } from "../api/UserApiService";
-
 import "./Login.css";
-
 import technikon from "./img/Frame.png";
 import logo from "./img/Vector.png";
 import { useNavigate } from "react-router-dom";
 import AddUser from "./AddUser";
-
+import 'react-toastify/dist/ReactToastify.css';
+import useNotification from "./WebSocket/AppSocket";
 
 const Login = () => {
 
@@ -26,35 +24,32 @@ const Login = () => {
 
   const [showModal, setShowModal] = useState(false);
 
-  const [loggedIn, setLoggedIn] = useState(false);
-
+  const [notifications, sendNotification] = useNotification();
+  
 
   const onInputChange = (event) => {
     const { name: name, value } = event.target;
     setCredentials((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  
-
   const handleSubmit = (event) => {
     event.preventDefault();
     loginUserApi(credentials)
       .then((response) => {
-        if(response.data.data===null){
-          alert("Incorrect credentials")
-        }else{
-          localStorage.setItem("tin",(response.data.data.tin))
-          localStorage.setItem("id",(response.data.data.id))
-          localStorage.setItem("role",(response.data.data.role))
-          navigate("/home",{ state: response.data.data})
+        if (response.data.data === null) {
+          alert("Wrong credentials");
+        } else {
+          sendNotification('/app/login',credentials.username)
+          localStorage.setItem("tin", (response.data.data.tin))
+          localStorage.setItem("id", (response.data.data.id))
+          localStorage.setItem("role", (response.data.data.role))
+          navigate("/home")
         }
-          
       })
       .catch((error) => {
         console.log(error);
       });
   };
-
 
   return (
     <div className="image">
@@ -157,7 +152,7 @@ const Login = () => {
                   type="submit"
                   size="lg"
                   onClick={handleSubmit}
-                  
+
                 >
                   Sign In
                 </Button>
@@ -168,9 +163,9 @@ const Login = () => {
                   marginRight: "94px",
                 }}
               >
-                
+
                 <h6 className="hr-lines">OR</h6>
-                
+
               </div>
               <div className="button">
                 <Button
