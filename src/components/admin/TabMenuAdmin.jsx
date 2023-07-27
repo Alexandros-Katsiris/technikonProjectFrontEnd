@@ -1,7 +1,17 @@
-import React from "react";
-
+import React,{useState} from "react";
+import Toast from "react-bootstrap/Toast";
+import { useEffect } from "react";
+import useNotification from "../WebSocket/AppSocket";
 
 function TabMenuAdmin(){
+  const [notifications, sendNotification] = useNotification();
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    if (notifications.length > 0) {
+      setShow(true);
+    }
+  }, [notifications]);
+
 
 
 return (
@@ -49,6 +59,22 @@ return (
             </li>
             </ul>
         </div>
+      </div>
+      <div>
+        {notifications.map((not) => (
+          <Toast show={show} onClose={() => setShow(false)}>
+            <Toast.Header>
+              <img
+                src="holder.js/20x20?text=%20"
+                className="rounded me-2"
+                alt=""
+              />
+              <strong className="me-auto">Bootstrap</strong>
+              <small>11 mins ago</small>
+            </Toast.Header>
+            <Toast.Body>{not}</Toast.Body>
+          </Toast>
+        ))}
       </div>
       {/* <AddContact
           showModal={showModal}

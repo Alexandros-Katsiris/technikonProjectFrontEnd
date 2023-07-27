@@ -50,7 +50,7 @@ const Home = () => {
         </Carousel.Item>
       </Carousel>
 
-      <div>
+      {/* <div>
         {notifications.map((not) => (
           <Toast show={show} onClose={() => setShow(false)}>
             <Toast.Header>
@@ -65,7 +65,7 @@ const Home = () => {
             <Toast.Body>{not}</Toast.Body>
           </Toast>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
