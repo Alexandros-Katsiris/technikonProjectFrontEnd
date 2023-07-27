@@ -1,32 +1,40 @@
 import React from "react";
 import { useState } from "react";
-import { Modal, Form, Button, Row, Col } from "react-bootstrap";
-import { createUserApi } from "../api/UserApiService";
-import "./AddUser.css";
+import { Modal, Form, Button, Row, Col} from "react-bootstrap";
+import { useEffect } from "react";
+import { retrievePropertyByE9Api, updatePropertyApi } from "../api/PropertyApiService";
 
-const AddUser = ({ showModal, toggleModal }) => {
-  const [user, setUser] = useState({
-    tin: "",
-    firstName: "",
-    surname: "",
-    email: "",
-    phoneNumber: "",
-    username: "",
-    password: "",
+const EditProperty = ({ showModal, toggleModal,e9 }) => {
+  const [property, setProperty] = useState({
+    e9Number: "",
+    yearOfConstruction: "",
+    propertyType: "",
+    webUser: {
+      id: "",
+    },
     address: {
       street: "",
       number: "",
       city: "",
       pc: "",
     },
-    role: "user",
   });
+
+  useEffect(() => {
+    getProperty();
+  }, [e9]);
+
+  const getProperty= async()=>{
+    await retrievePropertyByE9Api(e9)
+    .then((response)=>{setProperty(response.data.data)
+    console.log(property)})
+  }
 
   const onInputChange = (event) => {
     const { name: name, value } = event.target;
 
     if (["number", "street", "pc", "city"].includes(name)) {
-      setUser((prevState) => ({
+      setProperty((prevState) => ({
         ...prevState,
 
         address: {
@@ -36,16 +44,25 @@ const AddUser = ({ showModal, toggleModal }) => {
         },
       }));
     } else {
-      setUser((prevState) => ({ ...prevState, [name]: value }));
+      setProperty((prevState) => ({ ...prevState, [name]: value }));
     }
+    setProperty((prevState) => ({...prevState,
+      webUser: {...prevState.webUser,id:localStorage.getItem("id")}}))
+    console.log(event.target.name)
   };
+
+  const onPropertyTypeChange = (event) =>{
+    console.log(event.target.value)
+    setProperty((prevState)=> ({...prevState, propertyType: event.target.value}))
+  }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    toggleModal()
-    createUserApi(user)
+    console.log(property)
+    updatePropertyApi(property)
       .then((response) => {
         console.log(response.data);
+        toggleModal();
       })
       .catch((error) => {
         console.log(error);
@@ -53,9 +70,9 @@ const AddUser = ({ showModal, toggleModal }) => {
   };
 
 
-
   return (
-    <Modal
+    <div>
+      <Modal
       show={showModal}
       centered
       onHide={toggleModal}
@@ -64,7 +81,7 @@ const AddUser = ({ showModal, toggleModal }) => {
     >
       <div className="rounded-2">
         <Modal.Header closeButton style={{ borderBottom: 0 }}>
-          <Modal.Title>Register</Modal.Title>
+          <Modal.Title>Edit Property Information</Modal.Title>
         </Modal.Header>
         <div style={{ background: "#DFE2E7" }}>
           <Modal.Body>
@@ -76,7 +93,7 @@ const AddUser = ({ showModal, toggleModal }) => {
                   marginBottom: "18px",
                 }}
               >
-                <Form.Group key="firstName">
+                <Form.Group key="e9Number">
                   <Form.Label
                     style={{
                       marginBottom: "0px",
@@ -84,80 +101,13 @@ const AddUser = ({ showModal, toggleModal }) => {
                       paddingRight: "4px",
                     }}
                   >
-                    FirstName
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Name: e.g. John"
-                    name="firstName"
-                    value={user.firstName}
-                    onChange={(e) => onInputChange(e)}
-                    style={{
-                      border: "1px",
-                      paddingTop: "8px",
-                      paddingBottom: "8px",
-                      paddingLeft: "16px",
-                      paddingRight: "16px",
-                    }}
-                  />
-                </Form.Group>
-              </div>
-              <div
-                style={{
-                  width: "502px",
-                  height: "80px",
-                  marginBottom: "18px",
-                }}
-              >
-                <Form.Group key="surname" style={{}}>
-                  <Form.Label
-                    style={{
-                      marginBottom: "0px",
-                      paddingLeft: "4px",
-                      paddingRight: "4px",
-                    }}
-                  >
-                    Last Name
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Last Name e.g Williams"
-                    name="surname"
-                    value={user.surname}
-                    onChange={(e) => onInputChange(e)}
-                    style={{
-                      border: "1px",
-                      paddingTop: "8px",
-                      paddingBottom: "8px",
-                      paddingLeft: "16px",
-                      paddingRight: "16px",
-                    }}
-                  />
-                </Form.Group>
-              </div>
-              <div
-                style={{
-                  width: "502px",
-                  height: "80px",
-                  marginBottom: "18px",
-                }}
-              >
-                <Form.Group key="phoneNumber" style={{}}>
-                  <Form.Label
-                    style={{
-                      marginBottom: "0px",
-                      paddingLeft: "4px",
-                      paddingRight: "4px",
-                    }}
-                  >
-                    
-                    Phone Number
+                    E9
                   </Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder="e.g. 0123456789"
-                    name="phoneNumber"
-                    value={user.phoneNumber}
+                    placeholder="Name: e.g. John"
+                    name="e9Number"
+                    value={property.e9Number}
                     onChange={(e) => onInputChange(e)}
                     style={{
                       border: "1px",
@@ -173,6 +123,39 @@ const AddUser = ({ showModal, toggleModal }) => {
                 style={{
                   width: "502px",
                   height: "80px",
+                  marginBottom: "18px",
+                }}
+              >
+                <Form.Group key="yearOfConstruction" style={{}}>
+                  <Form.Label
+                    style={{
+                      marginBottom: "0px",
+                      paddingLeft: "4px",
+                      paddingRight: "4px",
+                    }}
+                  >
+                    Construction Date
+                  </Form.Label>
+                  <Form.Control
+                    type="date"
+                    placeholder="Last Name e.g Williams"
+                    name="yearOfConstruction"
+                    value={property.yearOfConstruction}
+                    onChange={(e) => onInputChange(e)}
+                    style={{
+                      border: "1px",
+                      paddingTop: "8px",
+                      paddingBottom: "8px",
+                      paddingLeft: "16px",
+                      paddingRight: "16px",
+                    }}
+                  />
+                </Form.Group>
+              </div>
+              
+              <div
+                style={{
+                  width: "502px",
                   marginBottom: "18px",
                 }}
               >
@@ -192,7 +175,7 @@ const AddUser = ({ showModal, toggleModal }) => {
                         type="text"
                         placeholder="Street Name e.g. Omirou"
                         name="street"
-                        value={user.address.street}
+                        value={property.address.street}
                         onChange={(e) => onInputChange(e)}
                         style={{
                           border: "1px",
@@ -210,7 +193,7 @@ const AddUser = ({ showModal, toggleModal }) => {
                         type="number"
                         placeholder="Sreet Number e.g. 8"
                         name="number"
-                        value={user.address.number}
+                        value={property.address.number}
                         onChange={(e) => onInputChange(e)}
                         style={{
                           border: "1px",
@@ -223,12 +206,12 @@ const AddUser = ({ showModal, toggleModal }) => {
                     </Form.Group>
                   </div>
                   <div className="address">
-                    <Form.Group key="pc" style={{}}>
+                    <Form.Group key="pc">
                       <Form.Control
                         type="number"
                         placeholder="Postal Code e.g. 15400"
                         name="pc"
-                        value={user.address.pc}
+                        value={property.address.pc}
                         onChange={(e) => onInputChange(e)}
                         style={{
                           border: "1px",
@@ -246,7 +229,7 @@ const AddUser = ({ showModal, toggleModal }) => {
                         type="text"
                         placeholder="City e.g. Athens"
                         name="city"
-                        value={user.address.city}
+                        value={property.address.city}
                         onChange={(e) => onInputChange(e)}
                         style={{
                           border: "1px",
@@ -260,134 +243,29 @@ const AddUser = ({ showModal, toggleModal }) => {
                   </div>
                 </div>
               </div>
-              <div
-                style={{
-                  width: "502px",
-                  height: "80px",
-                  marginBottom: "18px",
-                  columnCount: "2",
-                }}
-              >
-                <div className="emailTin" style={{}}>
-                  <Form.Group key="email" style={{}}>
-                    <Form.Label
-                      style={{
-                        marginBottom: "0px",
-                        paddingLeft: "4px",
-                        paddingRight: "4px",
-                      }}
-                    >
-                      Email
-                    </Form.Label>
-                    <Form.Control
-                      type="email"
-                      placeholder="example@scytalys.com"
-                      name="email"
-                      value={user.email}
-                      onChange={(e) => onInputChange(e)}
-                      style={{
-                        border: "1px",
-                        paddingTop: "8px",
-                        paddingBottom: "8px",
-                        paddingLeft: "16px",
-                        paddingRight: "16px",
-                      }}
-                    />
-                  </Form.Group>
-                </div>
-
-                <div className="emailTin">
-                  <Form.Group key="tin" style={{}}>
-                    <Form.Label
-                      style={{
-                        marginBottom: "0px",
-                        paddingLeft: "4px",
-                        paddingRight: "4px",
-                      }}
-                    >
-                      TIN
-                    </Form.Label>
-                    <Form.Control
-                      type="number"
-                      placeholder="Tax ID"
-                      name="tin"
-                      value={user.tin}
-                      onChange={(e) => onInputChange(e)}
-                      style={{
-                        border: "1px",
-                        paddingTop: "8px",
-                        paddingBottom: "8px",
-                        paddingLeft: "16px",
-                        paddingRight: "16px",
-                      }}
-                    />
-                  </Form.Group>
-                </div>
-              </div>
-              <div
-              style={{
-                width: "502px",
-                height: "80px",
-                marginBottom: "18px",
-              }}>
-                <Form.Group key="username" style={{}}>
-                  <Form.Label
-                    style={{
-                      marginBottom: "0px",
-                      paddingLeft: "4px",
-                      paddingRight: "4px",
-                    }}
-                  >
-                    Username
-                  </Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Your username"
-                    name="username"
-                    value={user.username}
-                    onChange={(e) => onInputChange(e)}
-                    style={{
-                      border: "1px",
-                      paddingTop: "8px",
-                      paddingBottom: "8px",
-                      paddingLeft: "16px",
-                      paddingRight: "16px",
-                    }}
-                  />
-                </Form.Group>
-              </div>
-              <div
-              style={{
-                width: "502px",
-                height: "80px",
-                marginBottom: "18px",
-              }}>
-                <Form.Group key="password" style={{}}>
-                  <Form.Label
-                    style={{
-                      marginBottom: "0px",
-                      paddingLeft: "4px",
-                      paddingRight: "4px",
-                    }}
-                  >
-                    Password
-                  </Form.Label>
-                  <Form.Control
-                    type="password"
-                    placeholder="Your password"
-                    name="password"
-                    value={user.password}
-                    onChange={(e) => onInputChange(e)}
-                    style={{
-                      border: "1px",
-                      paddingTop: "8px",
-                      paddingBottom: "8px",
-                      paddingLeft: "16px",
-                      paddingRight: "16px",
-                    }}
-                  />
-                </Form.Group>
-              </div>
+              <div >
+              <Form.Group key="propertyTypeGroup" as={Row} controlId={"propertyType"}>
+              <Form.Label column sm="4">
+                Property Type
+              </Form.Label>
+              <Col sm="10">
+                <Form.Select
+                style={{width: "502px",
+                marginBottom: "18px",}}
+                  aria-label="Default select example"
+                  onChange={(e) => onPropertyTypeChange(e)}
+                >
+                  <option>Select property type</option>
+                  <option name ="propertyType" value="0">Detached House</option>
+                  <option name ="propertyType" value="1">Maisonette</option>
+                  <option name ="propertyType" value="2">Apartment Building</option>
+                  <option name ="propertyType" value="3">Flat</option>
+                </Form.Select>
+              </Col>
+            </Form.Group>
+            </div>
+                
+              
             </Form>
           </Modal.Body>
 
@@ -402,7 +280,7 @@ const AddUser = ({ showModal, toggleModal }) => {
                 alignContent: "left",
               }}
             >
-              Register
+              Submit
             </Button>
             <Button
               className="cancel"
@@ -420,7 +298,8 @@ const AddUser = ({ showModal, toggleModal }) => {
         </div>
       </div>
     </Modal>
+    </div>
   );
 };
 
-export default AddUser;
+export default EditProperty;

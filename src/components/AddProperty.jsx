@@ -70,11 +70,11 @@ const AddProperty = ({ showModal, toggleModal }) => {
     >
       <div className="rounded-2">
         <Modal.Header closeButton style={{ borderBottom: 0 }}>
-          <Modal.Title>Register</Modal.Title>
+          <Modal.Title>Add Property</Modal.Title>
         </Modal.Header>
         <div style={{ background: "#DFE2E7" }}>
           <Modal.Body>
-            <Form className="form">
+            <Form className="form" style={{color:"black"}}>
               <div
                 style={{
                   width: "502px",
@@ -90,11 +90,11 @@ const AddProperty = ({ showModal, toggleModal }) => {
                       paddingRight: "4px",
                     }}
                   >
-                    E9
+                    E9 Number
                   </Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder="Name: e.g. John"
+                    placeholder="E9 Number"
                     name="e9Number"
                     value={property.e9Number}
                     onChange={(e) => onInputChange(e)}
@@ -111,7 +111,7 @@ const AddProperty = ({ showModal, toggleModal }) => {
               <div
                 style={{
                   width: "502px",
-                  height: "106px",
+                  height: "80px",
                   marginBottom: "18px",
                 }}
               >
@@ -145,7 +145,6 @@ const AddProperty = ({ showModal, toggleModal }) => {
               <div
                 style={{
                   width: "502px",
-                  height: "106px",
                   marginBottom: "18px",
                 }}
               >
@@ -196,7 +195,7 @@ const AddProperty = ({ showModal, toggleModal }) => {
                     </Form.Group>
                   </div>
                   <div className="address">
-                    <Form.Group key="pc" style={{}}>
+                    <Form.Group key="pc">
                       <Form.Control
                         type="number"
                         placeholder="Postal Code e.g. 15400"
@@ -233,12 +232,15 @@ const AddProperty = ({ showModal, toggleModal }) => {
                   </div>
                 </div>
               </div>
+              <div >
               <Form.Group key="propertyTypeGroup" as={Row} controlId={"propertyType"}>
-              <Form.Label column sm="2">
+              <Form.Label column sm="4">
                 Property Type
               </Form.Label>
               <Col sm="10">
                 <Form.Select
+                style={{width: "502px",
+                marginBottom: "18px",}}
                   aria-label="Default select example"
                   onChange={(e) => onPropertyTypeChange(e)}
                 >
@@ -250,6 +252,7 @@ const AddProperty = ({ showModal, toggleModal }) => {
                 </Form.Select>
               </Col>
             </Form.Group>
+            </div>
                 
               
             </Form>
@@ -266,7 +269,7 @@ const AddProperty = ({ showModal, toggleModal }) => {
                 alignContent: "left",
               }}
             >
-              Register
+              Add Property
             </Button>
             <Button
               className="cancel"

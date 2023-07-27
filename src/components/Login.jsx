@@ -157,15 +157,18 @@ const Login = () => {
                   Sign In
                 </Button>
               </div>
-              <div
-                style={{
-                  marginLeft: "94px",
-                  marginRight: "94px",
-                }}
+              <div className="or-line"
+                // style={{
+                //   marginLeft: "94px",
+                //   marginRight: "94px",
+                // }}
               >
+                <hr/>
+                
+                <h6 style={{justifyContent:'center'}}>OR</h6>
 
-                <h6 className="hr-lines">OR</h6>
-
+                <hr/>
+                
               </div>
               <div className="button">
                 <Button

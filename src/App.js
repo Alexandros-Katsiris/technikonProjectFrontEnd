@@ -7,7 +7,9 @@ import PropertyCard from "./components/PropertyCard";
 import Reports from "./components/admin/Reports";
 import Home from "./components/Home";
 // import { ToastContainer } from "react-toastify";
-// import 'react-toastify/dist/ReactToastify.css';
+// import 'react-toastify/dist/ReactToastify.css';import ContactUs from "./components/ContactUs";
+import Profile from "./components/Profile";
+
 
 const App = () => {
 
@@ -23,6 +25,9 @@ const App = () => {
           <Route path="aboutUs" element={<AboutUs />} />
           <Route path="listofusers" element={<ListOfUsers />} />
           <Route path="reports" element={<Reports />} />
+            <Route path="aboutUs" element={<AboutUs/>}/>
+            <Route path="contactUs" element={<ContactUs/>}/>
+            <Route path="profile" element={<Profile/>}/>
         </Route>
       </Routes>
     </div>

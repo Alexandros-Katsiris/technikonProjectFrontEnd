@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Modal, Form, Button, Row, Col } from "react-bootstrap";
+import { Modal, Form, Button } from "react-bootstrap";
 import { createUserApi } from "../../api/UserApiService";
 import "../AddUser.css";
 
@@ -42,7 +42,7 @@ const AddAdmin = ({ showModal, toggleModal }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    toggleModal()
+    toggleModal();
     createUserApi(user)
       .then((response) => {
         console.log(response.data);
@@ -51,8 +51,6 @@ const AddAdmin = ({ showModal, toggleModal }) => {
         console.log(error);
       });
   };
-
-  //  const {street, city,number,pc} = address;
 
   return (
     <Modal
@@ -64,11 +62,11 @@ const AddAdmin = ({ showModal, toggleModal }) => {
     >
       <div className="rounded-2">
         <Modal.Header closeButton style={{ borderBottom: 0 }}>
-          <Modal.Title>Register</Modal.Title>
+          <Modal.Title>Create Admin</Modal.Title>
         </Modal.Header>
         <div style={{ background: "#DFE2E7" }}>
           <Modal.Body>
-            <Form className="form">
+            <Form className="form" style={{ color: "black" }}>
               <div
                 style={{
                   width: "502px",
@@ -105,7 +103,7 @@ const AddAdmin = ({ showModal, toggleModal }) => {
               <div
                 style={{
                   width: "502px",
-                  height: "106px",
+                  height: "80px",
                   marginBottom: "18px",
                 }}
               >
@@ -138,7 +136,7 @@ const AddAdmin = ({ showModal, toggleModal }) => {
               <div
                 style={{
                   width: "502px",
-                  height: "106px",
+                  height: "80px",
                   marginBottom: "18px",
                 }}
               >
@@ -150,7 +148,6 @@ const AddAdmin = ({ showModal, toggleModal }) => {
                       paddingRight: "4px",
                     }}
                   >
-                    
                     Phone Number
                   </Form.Label>
                   <Form.Control
@@ -172,7 +169,7 @@ const AddAdmin = ({ showModal, toggleModal }) => {
               <div
                 style={{
                   width: "502px",
-                  height: "106px",
+                  height: "80px",
                   marginBottom: "18px",
                 }}
               >
@@ -263,7 +260,7 @@ const AddAdmin = ({ showModal, toggleModal }) => {
               <div
                 style={{
                   width: "502px",
-                  height: "106px",
+                  height: "80px",
                   marginBottom: "18px",
                   columnCount: "2",
                 }}
@@ -324,7 +321,13 @@ const AddAdmin = ({ showModal, toggleModal }) => {
                   </Form.Group>
                 </div>
               </div>
-              <div>
+              <div
+                style={{
+                  width: "502px",
+                  height: "80px",
+                  marginBottom: "18px",
+                }}
+              >
                 <Form.Group key="username" style={{}}>
                   <Form.Label
                     style={{
@@ -351,7 +354,13 @@ const AddAdmin = ({ showModal, toggleModal }) => {
                   />
                 </Form.Group>
               </div>
-              <div>
+              <div
+                style={{
+                  marginBottom: "0px",
+                  paddingLeft: "4px",
+                  paddingRight: "4px",
+                }}
+              >
                 <Form.Group key="password" style={{}}>
                   <Form.Label
                     style={{
