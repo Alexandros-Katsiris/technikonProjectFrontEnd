@@ -6,12 +6,8 @@ import plus from "./img/+.png";
 import downloadimg from "./img/download.png";
 import { useState } from "react";
 import { useEffect } from "react";
-import { Card, ListGroup, Table } from "react-bootstrap";
-import {
-  deleteUserApi,
-  retrieveAllUsersApi,
-  retrieveUserApi,
-} from "../api/UserApiService";
+import { Card, Table } from "react-bootstrap";
+import {deleteUserApi,retrieveAllUsersApi,retrieveUserApi} from "../api/UserApiService";
 import deleteimg from "./img/delete.png";
 import editimg from "./img/edit.png";
 import { retrievePropertyApi } from "../api/PropertyApiService";
@@ -62,11 +58,11 @@ const ListOfUsers = () => {
       </div>
       <div>
         <div style={{ columnCount: "1", marginTop: "20px" }}>
-          <img src={down} className="down" />
+          <img src={down} alt="down" className="down" />
           <b className="all">ALL</b>
           <b className="filter">
             Filter:
-            <img className="filterimg" src={filter} />
+            <img className="filterimg" src={filter} alt="filter"/>
           </b>
           <b className="az">
             <img className="azimg" src={down} />
