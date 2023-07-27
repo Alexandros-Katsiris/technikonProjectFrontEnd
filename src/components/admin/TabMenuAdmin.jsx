@@ -60,7 +60,7 @@ return (
             </ul>
         </div>
       </div>
-      <div>
+      <div style= {{marginTop:"85px",marginRight:"50px"}}>
         {notifications.map((not) => (
           <Toast show={show} onClose={() => setShow(false)}>
             <Toast.Header>
@@ -69,8 +69,8 @@ return (
                 className="rounded me-2"
                 alt=""
               />
-              <strong className="me-auto">Bootstrap</strong>
-              <small>11 mins ago</small>
+              <strong className="me-auto">New notification</strong>
+              <small>Just now</small>
             </Toast.Header>
             <Toast.Body>{not}</Toast.Body>
           </Toast>

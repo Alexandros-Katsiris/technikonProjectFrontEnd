@@ -11,13 +11,19 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import AddRepair from "./AddRepair";
 import moment from "moment/moment";
 import EditProperty from "./EditPropertyCard";
+import down from "./img/down.png";
+import sort from "./img/sort.png";
+import filter from "./img/filter.png";
+import plus from "./img/+.png";
+import downloadimg from "./img/download.png";
+import { Link } from "react-router-dom";
 
 
 const PropertyCard = () => {
   const tin = localStorage.getItem("tin");
   const [properties, setProperties] = useState([]);
   const [propertyId, setPropertyId] = useState(1);
-  const [propertyE9,setPropertyE9] = useState(1)
+  const [propertyE9,setPropertyE9] = useState(3)
 
   const [showModalProperty, setShowModalProperty] = useState(false);
   const [showModalRepair, setShowModalRepair] = useState(false);
@@ -66,11 +72,40 @@ const PropertyCard = () => {
 
   useEffect(() => {
     getProperty();
-  }, [showModalEdit]);
+  }, [showModalEdit,showModalProperty]);
 
   return (
     <div>
-      
+      <div>
+        <div style={{ columnCount: "1", marginTop: "20px",marginBottom:"40px" }}>
+          <img src={down} alt="down" className="down" />
+          <b className="all">ALL</b>
+          <b className="filter">
+            Filter:
+            <img className="filterimg" src={filter} alt="filter"/>
+          </b>
+          <b className="az">
+            <img className="azimg" src={down} />
+            A-Z
+          </b>
+          <b className="sort">
+            SORT:
+            <img className="sortimg" src={sort} />
+          </b>
+          <Link onClick={addProperty}>
+              <b className="plus">
+              ADD PROPERTY
+            
+              <img className="plusimg" src={plus}></img>
+            
+          </b>
+          </Link>
+          <b className="download">
+            DOWNLOAD
+            <img className="downloadimg" src={downloadimg} />
+          </b>
+        </div>
+      </div>
       <EditProperty showModal={showModalEdit} toggleModal={toggleModalEdit} e9={propertyE9}/>
       <AddProperty showModal={showModalProperty} toggleModal={toggleModalProperty} />
       <AddRepair showModal={showModalRepair} toggleModal={toggleModalRepair} id={propertyId} />
@@ -96,6 +131,7 @@ const PropertyCard = () => {
                 <Card.Body>
                   <ButtonGroup aria-label="Basic example" size='sm'>
                     <Button variant="success" className="cardButton" onClick={() => addRepair(property.id)}>Repair</Button>
+                    
                     <Button variant="warning" className="cardButton" onClick={() =>editProperty(property.e9Number)}>Edit</Button>
                     <Button variant="danger" className="cardButton" onClick={() => deleteProperty(property.id)}>Delete</Button>
 
@@ -107,9 +143,6 @@ const PropertyCard = () => {
         })}
       </ListGroup>
 
-      <Button className="btn btn-primary" type="button" onClick={addProperty}>
-        Add Property
-      </Button>
     </div>
   );
 };
