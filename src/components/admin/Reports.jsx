@@ -54,16 +54,18 @@ function Reports() {
     <div>
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Dropdown Button
+          Select user to see his total amount spent
         </Dropdown.Toggle>
         <Dropdown.Menu>
           {users.map((user) => {
             return (
+              
               <Dropdown.Item
                 onClick={() => getNumPropertyRepairsReports(user.id)}
               >
-                {user.tin}
+                Total Cost for {user.firstName}
               </Dropdown.Item>
+            
             );
           })}
         </Dropdown.Menu>

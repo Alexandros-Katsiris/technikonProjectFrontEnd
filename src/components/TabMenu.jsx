@@ -16,7 +16,7 @@ function TabMenu() {
             <li className="nav-item">
               <a
                 className="nav-link"
-                href="register"
+                href="profile"
                 style={{ color: "black", fontSize: 18 }}
               >
                 Profile

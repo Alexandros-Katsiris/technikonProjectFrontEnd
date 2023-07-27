@@ -74,11 +74,11 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
       >
         <div className="rounded-2">
           <Modal.Header closeButton style={{ borderBottom: 0 }}>
-            <Modal.Title>Register</Modal.Title>
+            <Modal.Title>Add Repair</Modal.Title>
           </Modal.Header>
           <div style={{ background: "#DFE2E7" }}>
             <Modal.Body>
-              <Form className="form">
+              <Form className="form" style={{color:"black"}}>
                 <div
                   style={{
                     width: "502px",
@@ -89,7 +89,7 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
                   <Form.Group key="description">
                     <Form.Label
                       style={{
-                        marginBottom: "0px",
+                        marginBottom: "8px",
                         paddingLeft: "4px",
                         paddingRight: "4px",
                       }}
@@ -98,7 +98,7 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
                     </Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="Discription"
+                      placeholder="Description"
                       name="description"
                       value={repair.description}
                       onChange={(e) => onInputChange(e)}
@@ -122,12 +122,12 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
                   <Form.Group key="dateOfScheduledRepair" style={{}}>
                     <Form.Label
                       style={{
-                        marginBottom: "0px",
+                        marginBottom: "8px",
                         paddingLeft: "4px",
                         paddingRight: "4px",
                       }}
                     >
-                      dateOfScheduledRepair
+                      Date Of Scheduled Repair
                     </Form.Label>
                     <Form.Control
                       type="date"
@@ -165,6 +165,7 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
                       <Form.Select
                         aria-label="Default select example"
                         onChange={(e) => onRepairTypeChange(e)}
+                        style={{width:"504px"}}
                       >
                         <option>Select property type</option>
                         <option name="repairType" value="0">
@@ -206,6 +207,7 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
                       <Form.Select
                         aria-label="Default select example"
                         onChange={(e) => onRepairStatusChange(e)}
+                        style={{width:"504px"}}
                       >
                         <option>Select Repair Status</option>
                         <option name="repairStatus" value="0">
@@ -234,7 +236,7 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
                   <Form.Group key="costOfRepair" style={{}}>
                     <Form.Label
                       style={{
-                        marginBottom: "0px",
+                        marginBottom: "8px",
                         paddingLeft: "4px",
                         paddingRight: "4px",
                       }}
@@ -257,16 +259,6 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
                     />
                   </Form.Group>
                 </div>
-
-                <div
-                  style={{
-                    width: "502px",
-                    height: "80px",
-                    marginBottom: "18px",
-                  }}
-                >
-                  
-                </div>
               </Form>
             </Modal.Body>
 
@@ -281,7 +273,7 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
                   alignContent: "left",
                 }}
               >
-                Register
+                Add Repair
               </Button>
               <Button
                 className="cancel"

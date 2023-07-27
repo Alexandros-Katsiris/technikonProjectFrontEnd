@@ -7,23 +7,51 @@ import downloadimg from "./img/download.png";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Card, ListGroup, Table } from "react-bootstrap";
-import { retrieveAllUsersApi } from "../api/UserApiService";
-import deleteimg from './img/delete.png';
-import editimg from './img/edit.png'
+import {
+  deleteUserApi,
+  retrieveAllUsersApi,
+  retrieveUserApi,
+} from "../api/UserApiService";
+import deleteimg from "./img/delete.png";
+import editimg from "./img/edit.png";
+import { retrievePropertyApi } from "../api/PropertyApiService";
+import EditUser from "./admin/EditUser"
 
 const ListOfUsers = () => {
   const [users, setUsers] = useState([]);
+  const [userToDelete,setUserToDelete]= useState([]);
+  const[showModalEdit,setShowModalEdit]=useState(false);
+  const [userId,setUserid]=useState(localStorage.getItem("id"))
 
   const getUsers = () => {
     retrieveAllUsersApi().then((response) => {
       setUsers(response.data.data);
-      console.log(users);
     });
+  };
+
+  const setId=(id)=>{
+    setUserid(id)
+    toggleModalEdit()
+  }
+
+  const toggleModalEdit = () => {
+
+    setShowModalEdit((show) => !show);
+    
+  };
+
+  const deactivateUser = async(id) => {
+   await  retrieveUserApi(id).then((response)=>setUserToDelete(response.data.data))
+    if (retrievePropertyApi(userToDelete.tin) !== null) {
+      setUsers(users.filter((user) => user.id !== id));
+    } else {
+      deleteUserApi(id);
+    }
   };
 
   useEffect(() => {
     getUsers();
-  });
+  }, []);
 
   return (
     <div>
@@ -58,7 +86,7 @@ const ListOfUsers = () => {
           </b>
         </div>
       </div>
-      <div style={{ columnCount: "6", marginTop: "40px", marginLeft: "80px" }}>
+      <div style={{ columnCount: "6", marginTop: "40px", marginLeft: "50px" }}>
         <h6>Name</h6>
         <h6>Surname</h6>
         <h6>Phone Number</h6>
@@ -66,25 +94,63 @@ const ListOfUsers = () => {
         <h6>Tax ID Number</h6>
         <h6>Actions</h6>
       </div>
-      
-        <Table style={{ marginLeft: "45px"}}>
-          {users.map((user) => {
-            return (
-              <Table key={user.id} >
-                <Card style={{ border: '0', width: "1720px",  }}>
-                  <Table className="usersTable">
-                    <td style={{ border: '0', width:'326px'}}>{user.firstName}</td>
-                    <td style={{ border: '0', width:'310px'}}>{user.surname}</td>
-                    <td style={{ border: '0', width:'286px' }}><div style={{marginLeft:'10px'}}>{user.phoneNumber}</div></td>
-                    <td style={{ border: '0', width:'286px'}}>{user.email}</td>
-                    <td style={{ border: '0', width:'288px'}}><div style={{marginLeft:'50px'}}>{user.tin}</div></td>
-                    <td style={{ border: '0', width:'286px' }}><button style={{marginLeft: '50px', marginRight:"10px", border: '0', background:'white'}}><img src={editimg} alt="edit" /></button><button style={{marginRight:"20px", background:'white', border: '0'}}><img src={deleteimg} alt="edit" style={{borderImage: '0'}}/></button></td>
-                  </Table>
-                </Card>
-              </Table>
-            );
-          })}
-        </Table>
+      <EditUser showModal={showModalEdit} toggleModal={toggleModalEdit} id={userId}/>
+      <Table style={{ marginLeft: "45px" }}>
+        {users.map((user) => {
+          return (
+            <div>
+            
+            <Table key={user.id}>
+            
+              <Card style={{ border: "0", width: "1720px" }}>
+                <Table className="usersTable">
+                  <td style={{ border: "0", width: "326px" }}>
+                    {user.firstName}
+                  </td>
+                  <td style={{ border: "0", width: "310px" }}>
+                    {user.surname}
+                  </td>
+                  <td style={{ border: "0", width: "286px" }}>
+                    <div style={{ marginLeft: "10px" }}>{user.phoneNumber}</div>
+                  </td>
+                  <td style={{ border: "0", width: "286px" }}>{user.email}</td>
+                  <td style={{ border: "0", width: "288px" }}>
+                    <div style={{ marginLeft: "50px" }}>{user.tin}</div>
+                  </td>
+                  <td style={{ border: "0", width: "286px" }}>
+                    <button
+                    onClick={()=>setId(user.id)}
+                      style={{
+                        marginLeft: "50px",
+                        marginRight: "10px",
+                        border: "0",
+                        background: "white",
+                      }}
+                    >
+                      <img src={editimg} alt="edit" />
+                    </button>
+                    <button
+                      onClick={() => deactivateUser(user.id)}
+                      style={{
+                        marginRight: "20px",
+                        background: "white",
+                        border: "0",
+                      }}
+                    >
+                      <img
+                        src={deleteimg}
+                        alt="edit"
+                        style={{ borderImage: "0" }}
+                      />
+                    </button>
+                  </td>
+                </Table>
+              </Card>
+            </Table>
+            </div>
+          );
+        })}
+      </Table>
       
     </div>
   );
