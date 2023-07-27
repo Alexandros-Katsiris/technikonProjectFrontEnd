@@ -8,7 +8,7 @@ import Reports from "./components/admin/Reports";
 import Home from "./components/Home";
 import ContactUs from "./components/ContactUs"
 import Profile from "./components/Profile";
-import ContactUs from "./components/ContactUs";
+
 
 const App = () => {
   return (
@@ -22,7 +22,7 @@ const App = () => {
           <Route path="listofusers" element={<ListOfUsers />} />
           <Route path="reports" element={<Reports />} />
           <Route path="aboutUs" element={<AboutUs />} />
-
+          <Route path="contactUs" element={<ContactUs/>}/>
           <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
