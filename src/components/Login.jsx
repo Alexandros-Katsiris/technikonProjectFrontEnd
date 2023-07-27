@@ -170,7 +170,7 @@ const Login = () => {
               >
                 <hr/>
                 
-                <h6>OR</h6>
+                <h6 style={{justifyContent:'center'}}>OR</h6>
 
                 <hr/>
                 

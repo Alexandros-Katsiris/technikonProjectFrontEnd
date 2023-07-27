@@ -118,12 +118,14 @@ line-height: 24px; /* 200% */
     margin-top: 5%;
     margin-bottom: 5%;
     color: #fff;
-    font-family: Rubik;
+    font-family: Arial;
     font-size: 14px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
     text-transform: uppercase;
+    margin-left: 100px;
+    margin-right: 100px;
     }
     
     .or-line hr {
