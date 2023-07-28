@@ -31,24 +31,6 @@ function TabMenu() {
                 Properties
               </a>
             </li>
-            <li className="nav-item">
-              <a
-                class="nav-link"
-                href="/src/components/tabMenuComponents/AboutUs"
-                style={{ color: "black", fontSize: 18 }}
-              >
-                About Us
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                href="contactUs"
-                style={{ color: "black", fontSize: 18 }}
-              >
-                Contact Us
-              </a>
-            </li>
           </ul>
         </div>
       </div>
