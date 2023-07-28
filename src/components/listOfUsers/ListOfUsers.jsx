@@ -18,6 +18,7 @@ const ListOfUsers = () => {
   const [userToDelete,setUserToDelete]= useState([]);
   const[showModalEdit,setShowModalEdit]=useState(false);
   const [userId,setUserid]=useState(localStorage.getItem("id"))
+  const [loading,setLoading]=useState(false)
 
   const getUsers = () => {
     retrieveAllUsersApi().then((response) => {
@@ -36,18 +37,15 @@ const ListOfUsers = () => {
     
   };
 
-  const deactivateUser = async(id) => {
-   await  retrieveUserApi(id).then((response)=>setUserToDelete(response.data.data))
-    if (retrievePropertyApi(userToDelete.tin) !== null) {
-      setUsers(users.filter((user) => user.id !== id));
-    } else {
+  const deactivateUser = (id) => {
+      setLoading(true)
       deleteUserApi(id);
-    }
+      setLoading(false)
   };
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, [setLoading]);
 
   return (
     <div>
