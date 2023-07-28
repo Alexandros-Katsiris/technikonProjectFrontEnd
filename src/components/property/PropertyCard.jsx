@@ -54,8 +54,11 @@ const PropertyCard = () => {
 
   const addRepair = (id) => {
     console.log("hi")
-    toggleModalRepair();
+    console.log(id)
     setPropertyId(id)
+    console.log(propertyId)
+    toggleModalRepair();
+    
   }
 
   const getProperty = () => {
@@ -151,7 +154,6 @@ const PropertyCard = () => {
                 <Card.Body>
                   <ButtonGroup aria-label="Basic example" size='sm'>
                     <Button variant="success" className="cardButton" onClick={() => addRepair(property.id)}>Repair</Button>
-                    
                     <Button variant="warning" className="cardButton" onClick={() =>editProperty(property.e9Number)}>Edit</Button>
                     <Button variant="danger" className="cardButton" onClick={() => deleteProperty(property.id)}>Delete</Button>
 

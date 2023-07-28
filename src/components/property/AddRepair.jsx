@@ -6,7 +6,8 @@ import Button from "react-bootstrap/Button";
 import { createRepairApi } from "../../api/RepairApiService";
 import { Row, Col } from "react-bootstrap";
 
-const AddRepair = ({ showModal, toggleModal, propertyId }) => {
+const AddRepair = ({ showModal, toggleModal, id }) => {
+  
   const [repair, setRepair] = useState({
     description: "",
     dateOfScheduledRepair: "",
@@ -23,6 +24,7 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
 
   const onInputChange = (event) => {
     const { name: name, value } = event.target;
+    console.log(id)
 
     setRepair((prevState) => ({ ...prevState, [name]: value }));
 
@@ -32,7 +34,7 @@ const AddRepair = ({ showModal, toggleModal, propertyId }) => {
     }));
     setRepair((prevState) => ({
       ...prevState,
-      property: { ...prevState.property, id: propertyId },
+      property: { ...prevState.property, id: id },
     }));
   };
 

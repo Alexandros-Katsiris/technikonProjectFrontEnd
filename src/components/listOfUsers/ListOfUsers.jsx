@@ -72,14 +72,6 @@ const ListOfUsers = () => {
             SORT:
             <img className="sortimg" src={sort} />
           </b>
-          <b className="plus">
-            ADD PROPERTY
-            <img className="plusimg" src={plus}></img>
-          </b>
-          <b className="download">
-            DOWNLOAD
-            <img className="downloadimg" src={downloadimg} />
-          </b>
         </div>
       </div>
       <div style={{ columnCount: "6", marginTop: "40px", marginLeft: "50px" }}>

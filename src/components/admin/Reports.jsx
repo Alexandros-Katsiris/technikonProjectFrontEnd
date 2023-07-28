@@ -97,13 +97,7 @@ function Reports() {
                     REPORTS FOR TYPE: {propertyRepairReports.repairType}
                   </Card.Title>
                   <Card.Text>
-                    <br></br>
-                    Showing total cost and status of the above repair types for
-                    user's properties with:<pre></pre>
-                    <ul>
-                      <li>USER ID {localStorage.getItem("id")}</li>
-                      <li>USER TIN {localStorage.getItem("tin")}</li>
-                    </ul>
+                    
                   </Card.Text>
                 </Card.Body>
                 <ListGroup className="list-group-flush">
