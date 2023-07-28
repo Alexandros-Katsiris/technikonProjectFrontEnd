@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
-import Layout from "./components/Layout";
-import Login from "./components/Login";
-import AboutUs from "./components/AboutUs";
-import ListOfUsers from "./components/ListOfUsers";
-import PropertyCard from "./components/PropertyCard";
+import Layout from "./components/layout/Layout";
+import Login from "./components/login/Login";
+import AboutUs from "./components/tabMenuComponents/AboutUs";
+import ListOfUsers from "./components/listOfUsers/ListOfUsers";
+import PropertyCard from "./components/property/PropertyCard";
 import Reports from "./components/admin/Reports";
-import Home from "./components/Home";
-import ContactUs from "./components/ContactUs"
-import Profile from "./components/Profile";
+import Home from "./components/home/Home";
+import ContactUs from "./components/tabMenuComponents/ContactUs"
+import Profile from "./components/tabMenuComponents/Profile";
 
 
 const App = () => {

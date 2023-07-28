@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
-import { createRepairApi } from "../api/RepairApiService";
+import { createRepairApi } from "../../api/RepairApiService";
 import { Row, Col } from "react-bootstrap";
 
 const AddRepair = ({ showModal, toggleModal, propertyId }) => {

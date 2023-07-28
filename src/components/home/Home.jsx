@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Carousel } from "react-bootstrap";
-import first from "./img/homerepair.jpg";
-import second from "./img/repair-job.jpg";
-import third from "./img/renovation.jpg";
+import first from "../img/homerepair.jpg";
+import second from "../img/repair-job.jpg";
+import third from "../img/renovation.jpg";
 import Toast from "react-bootstrap/Toast";
 import { useEffect } from "react";
-import useNotification from "./WebSocket/AppSocket";
+import useNotification from "../WebSocket/AppSocket";
 
 const Home = () => {
   const [notifications, sendNotification] = useNotification();

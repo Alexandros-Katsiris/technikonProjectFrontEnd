@@ -1,9 +1,9 @@
 import { Outlet } from "react-router-dom";
 import "./Layout.css";
-import TabMenu from "./TabMenu";
-import TabMenuAdmin from "./admin/TabMenuAdmin";
-import Navbar1 from "./navbar1";
-import NavBarAdmin from "./admin/navbarAdmin"
+import TabMenu from "../listOfUsers/user/TabMenu";
+import TabMenuAdmin from "../admin/TabMenuAdmin";
+import Navbar from "../listOfUsers/user/navbar";
+import NavBarAdmin from "../admin/navbarAdmin"
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
@@ -23,7 +23,7 @@ const Layout = (props) => {
     if (role === "user") {
       return (
         <div className="Layout">
-          <Navbar1 />
+          <Navbar />
           <TabMenu />
           <main>
           

@@ -1,10 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { Modal, Form, Button, Row, Col} from "react-bootstrap";
-import { useEffect } from "react";
-import { retrievePropertyByE9Api, updatePropertyApi } from "../api/PropertyApiService";
+import { createPropertyApi } from "../../api/PropertyApiService";
 
-const EditProperty = ({ showModal, toggleModal,e9 }) => {
+const AddProperty = ({ showModal, toggleModal }) => {
   const [property, setProperty] = useState({
     e9Number: "",
     yearOfConstruction: "",
@@ -19,16 +18,6 @@ const EditProperty = ({ showModal, toggleModal,e9 }) => {
       pc: "",
     },
   });
-
-  useEffect(() => {
-    getProperty();
-  }, [e9]);
-
-  const getProperty= async()=>{
-    await retrievePropertyByE9Api(e9)
-    .then((response)=>{setProperty(response.data.data)
-    console.log(property)})
-  }
 
   const onInputChange = (event) => {
     const { name: name, value } = event.target;
@@ -59,7 +48,7 @@ const EditProperty = ({ showModal, toggleModal,e9 }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log(property)
-    updatePropertyApi(property)
+    createPropertyApi(property)
       .then((response) => {
         console.log(response.data);
         toggleModal();
@@ -81,7 +70,7 @@ const EditProperty = ({ showModal, toggleModal,e9 }) => {
     >
       <div className="rounded-2">
         <Modal.Header closeButton style={{ borderBottom: 0 }}>
-          <Modal.Title>Edit Property Information</Modal.Title>
+          <Modal.Title>Add Property</Modal.Title>
         </Modal.Header>
         <div style={{ background: "#DFE2E7" }}>
           <Modal.Body>
@@ -101,11 +90,11 @@ const EditProperty = ({ showModal, toggleModal,e9 }) => {
                       paddingRight: "4px",
                     }}
                   >
-                    E9
+                    E9 Number
                   </Form.Label>
                   <Form.Control
                     type="number"
-                    placeholder="Name: e.g. John"
+                    placeholder="E9 Number"
                     name="e9Number"
                     value={property.e9Number}
                     onChange={(e) => onInputChange(e)}
@@ -280,7 +269,7 @@ const EditProperty = ({ showModal, toggleModal,e9 }) => {
                 alignContent: "left",
               }}
             >
-              Submit
+              Add Property
             </Button>
             <Button
               className="cancel"
@@ -302,4 +291,4 @@ const EditProperty = ({ showModal, toggleModal,e9 }) => {
   );
 };
 
-export default EditProperty;
+export default AddProperty;

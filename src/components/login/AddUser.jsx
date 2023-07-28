@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { Modal, Form, Button, Row, Col } from "react-bootstrap";
-import { createUserApi } from "../api/UserApiService";
+import { createUserApi } from "../../api/UserApiService";
 import "./AddUser.css";
 
 const AddUser = ({ showModal, toggleModal }) => {

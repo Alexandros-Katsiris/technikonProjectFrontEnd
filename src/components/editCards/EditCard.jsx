@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { Modal, Form, Button } from "react-bootstrap";
-import { retrieveUserApi, updateUserApi } from '../api/UserApiService';
+import { retrieveUserApi, updateUserApi } from '../../api/UserApiService';
 import { useState } from 'react';
 
 const EditCard = ({ showModal, toggleModal }) => {

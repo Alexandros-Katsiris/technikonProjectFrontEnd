@@ -34,7 +34,7 @@ function TabMenu() {
             <li className="nav-item">
               <a
                 class="nav-link"
-                href="/aboutUs"
+                href="/src/components/tabMenuComponents/AboutUs"
                 style={{ color: "black", fontSize: 18 }}
               >
                 About Us

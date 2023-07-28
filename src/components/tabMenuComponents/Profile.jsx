@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
 import { Card } from 'react-bootstrap'
 import Table from 'react-bootstrap/Table'
-import { retrieveUserApi } from '../api/UserApiService'
+import { retrieveUserApi } from '../../api/UserApiService'
 import { useState } from 'react'
-import editimg from "./img/edit.png"
-import EditCard from './EditCard'
+import editimg from "../img/edit.png"
+import EditCard from '../editCards/EditCard'
 
 const Profile = () => {
 

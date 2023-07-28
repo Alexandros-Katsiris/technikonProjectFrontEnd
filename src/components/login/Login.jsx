@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { Form, Button, } from "react-bootstrap";
-import { loginUserApi } from "../api/UserApiService";
+import { loginUserApi } from "../../api/UserApiService";
 import "./Login.css";
-import technikon from "./img/Frame.png";
-import logo from "./img/Vector.png";
+import technikon from "../img/Frame.png";
+import logo from "../img/Vector.png";
 import { useNavigate } from "react-router-dom";
 import AddUser from "./AddUser";
 import 'react-toastify/dist/ReactToastify.css';
-import useNotification from "./WebSocket/AppSocket";
+import useNotification from "../WebSocket/AppSocket";
 
 const Login = () => {
 

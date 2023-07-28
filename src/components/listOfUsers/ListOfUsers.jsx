@@ -1,17 +1,17 @@
 import "./ListOfUsers.css";
-import down from "./img/down.png";
-import sort from "./img/sort.png";
-import filter from "./img/filter.png";
-import plus from "./img/+.png";
-import downloadimg from "./img/download.png";
+import down from "../img/down.png";
+import sort from "../img/sort.png";
+import filter from "../img/filter.png";
+import plus from "../img/+.png";
+import downloadimg from "../img/download.png";
 import { useState } from "react";
 import { useEffect } from "react";
 import { Card, Table } from "react-bootstrap";
-import {deleteUserApi,retrieveAllUsersApi,retrieveUserApi} from "../api/UserApiService";
-import deleteimg from "./img/delete.png";
-import editimg from "./img/edit.png";
-import { retrievePropertyApi } from "../api/PropertyApiService";
-import EditUser from "./admin/EditUser"
+import {deleteUserApi,retrieveAllUsersApi,retrieveUserApi} from "../../api/UserApiService";
+import deleteimg from "../img/delete.png";
+import editimg from "../img/edit.png";
+import { retrievePropertyApi } from "../../api/PropertyApiService";
+import EditUser from "../admin/EditUser"
 
 const ListOfUsers = () => {
   const [users, setUsers] = useState([]);

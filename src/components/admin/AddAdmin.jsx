@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { Modal, Form, Button } from "react-bootstrap";
 import { createUserApi } from "../../api/UserApiService";
-import "../AddUser.css";
+import "../login/AddUser.css";
 
 const AddAdmin = ({ showModal, toggleModal }) => {
   const [user, setUser] = useState({

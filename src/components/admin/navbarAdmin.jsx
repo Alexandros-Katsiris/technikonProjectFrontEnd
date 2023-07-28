@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import technikon from "../img/Frame.png";
 import logo from "../img/Vector.png";
-import "../navbar1.css";
+import "../listOfUsers/user/navbar.css";
 import createbutton from "../img/createbutton.png";
 import search from "../img/search.png";
 import img from "../img/Img.png";
 import Notification from "../img/Notifications_unread.png"
 import menuDot from "../img/menu-dots-vert.png";
-import AddUser from "../AddUser";
+import AddUser from "../login/AddUser";
 import AddAdmin from "./AddAdmin";
 
 

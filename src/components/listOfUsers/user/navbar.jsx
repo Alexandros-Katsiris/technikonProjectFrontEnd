@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import technikon from "./img/Frame.png";
-import logo from "./img/Vector.png";
-import "./navbar1.css";
-import search from "./img/search.png";
-import img from "./img/Img.png";
-import Notification from "./img/Notifications_unread.png"
-import menuDot from "./img/menu-dots-vert.png";
+import technikon from "../../img/Frame.png";
+import logo from "../../img/Vector.png";
+import "./navbar.css";
+import search from "../../img/search.png";
+import img from "../../img/Img.png";
+import Notification from "../../img/Notifications_unread.png"
+import menuDot from "../../img/menu-dots-vert.png";
 
 
 
-function Navbar1() {
+function Navbar() {
 
     const [searchInput, setSearchInput] = useState("");
 
@@ -98,4 +98,4 @@ function Navbar1() {
     );
 }
 
-export default Navbar1;
+export default Navbar;

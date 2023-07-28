@@ -1,21 +1,24 @@
 import React, { useEffect } from "react";
-import {retrievePropertyApi,deletePropertyApi} from "../api/PropertyApiService";
+import {retrievePropertyApi,deletePropertyApi} from "../../api/PropertyApiService";
 import "./PropertyCard.css"
 import { useState } from "react";
 import { Card } from "react-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
-import house from "./img/house.png";
+import house from "../img/house.png";
+import flat from "../img/flat.png";
+import maisonette from "../img/maisonette.png"
+import apartmentBuilding from "../img/apartment-building.png"
 import AddProperty from "./AddProperty";
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import AddRepair from "./AddRepair";
 import moment from "moment/moment";
-import EditProperty from "./EditPropertyCard";
-import down from "./img/down.png";
-import sort from "./img/sort.png";
-import filter from "./img/filter.png";
-import plus from "./img/+.png";
-import downloadimg from "./img/download.png";
+import EditProperty from "../editCards/EditPropertyCard";
+import down from "../img/down.png";
+import sort from "../img/sort.png";
+import filter from "../img/filter.png";
+import plus from "../img/+.png";
+import downloadimg from "../img/download.png";
 import { Link } from "react-router-dom";
 
 
@@ -23,7 +26,9 @@ const PropertyCard = () => {
   const tin = localStorage.getItem("tin");
   const [properties, setProperties] = useState([]);
   const [propertyId, setPropertyId] = useState(1);
-  const [propertyE9,setPropertyE9] = useState(3)
+  const [propertyE9,setPropertyE9] = useState(1)
+  const [image,setImage] = useState(house)
+  const [propertyType, setPropertyType] = useState();
 
   const [showModalProperty, setShowModalProperty] = useState(false);
   const [showModalRepair, setShowModalRepair] = useState(false);
@@ -70,6 +75,19 @@ const PropertyCard = () => {
     setProperties(properties.filter((property) => property.id !== propertyId));
   };
 
+  const getImage=(pt)=>{
+    console.log(pt)
+      if(pt === "FLAT"){
+        return (<Card.Img variant="top" src={flat} />)
+      }else if(pt === "APARTMENT_BUILDING"){
+        return (<Card.Img variant="top" src={apartmentBuilding} />)
+      }else if(pt === "MAISONETTE"){
+        return (<Card.Img variant="top" src={maisonette} />)
+      }else{
+        return (<Card.Img variant="top" src={house} />)
+      }
+  }
+
   useEffect(() => {
     getProperty();
   }, [showModalEdit,showModalProperty]);
@@ -114,7 +132,9 @@ const PropertyCard = () => {
           return (
             <ListGroup.Item style={{ margin: "8px" }} key={property.e9Number}>
               <Card style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={house} />
+                {/* {() => {setPropertyType(property.propertyType)}} */}
+                {getImage(property.propertyType)}
+                
                 <Card.Body>
                   <Card.Title style={{ textAlign: "center" }}>{property.propertyType}</Card.Title>
                 </Card.Body>
